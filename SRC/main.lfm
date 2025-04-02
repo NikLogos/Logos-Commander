@@ -1,0 +1,939 @@
+object mForm: TmForm
+  Left = 324
+  Height = 748
+  Top = 102
+  Width = 1024
+  Caption = 'LogosCommander'
+  ClientHeight = 748
+  ClientWidth = 1024
+  Menu = MainMenu1
+  OnClose = FormClose
+  OnCreate = FormCreate
+  OnDropFiles = FormDropFiles
+  OnResize = FormResize
+  OnShow = FormShow
+  OnWindowStateChange = FormWindowStateChange
+  LCLVersion = '3.8.0.0'
+  object btnToolBar: TToolBar
+    Left = 0
+    Top = 716
+    Width = 1024
+    Align = alBottom
+    AutoSize = True
+    ButtonHeight = 30
+    ButtonWidth = 150
+    Images = ImageList1
+    List = True
+    ParentShowHint = False
+    ShowCaptions = True
+    ShowHint = True
+    TabOrder = 0
+    TabStop = True
+    Wrapable = False
+    object ToolButton1: TToolButton
+      Left = 1
+      Top = 2
+      Action = ActionRename
+    end
+    object ToolButton3: TToolButton
+      Left = 151
+      Top = 2
+      Action = ActionView
+    end
+    object ToolButton2: TToolButton
+      Left = 301
+      Top = 2
+      Action = ActionEdit
+    end
+    object ToolButton4: TToolButton
+      Left = 451
+      Top = 2
+      Action = ActionCopy
+    end
+    object ToolButton5: TToolButton
+      Left = 601
+      Top = 2
+      Action = ActionMov
+    end
+    object ToolButton6: TToolButton
+      Left = 751
+      Top = 2
+      Action = ActionNewFold
+    end
+    object ToolButton7: TToolButton
+      Left = 901
+      Top = 2
+      Action = ActionDel
+    end
+  end
+  object mPanel: TPanel
+    Left = 0
+    Height = 716
+    Top = 0
+    Width = 1024
+    Align = alClient
+    BevelOuter = bvLowered
+    ClientHeight = 716
+    ClientWidth = 1024
+    TabOrder = 1
+    object rightPanel: TPanel
+      Left = 493
+      Height = 714
+      Top = 1
+      Width = 530
+      Align = alClient
+      BevelOuter = bvLowered
+      ClientHeight = 714
+      ClientWidth = 530
+      TabOrder = 0
+      object PageControl2: TPageControl
+        Left = 1
+        Height = 712
+        Top = 1
+        Width = 528
+        TabStop = False
+        ActivePage = RightFileTab
+        Align = alClient
+        TabIndex = 0
+        TabOrder = 0
+        object RightFileTab: TTabSheet
+          Caption = 'RightFileTab'
+          ClientHeight = 684
+          ClientWidth = 520
+          object rFList: TFileListGrid
+            Left = 0
+            Height = 616
+            Top = 68
+            Width = 520
+            Align = alClient
+            Color = 15134448
+            ColCount = 3
+            DefaultRowHeight = 22
+            DoubleBuffered = True
+            FixedCols = 0
+            Flat = True
+            Font.Height = -13
+            GridLineStyle = psClear
+            MouseWheelOption = mwGrid
+            Options = [goFixedVertLine, goFixedHorzLine, goVertLine, goHorzLine, goRangeSelect, goColSizing, goRowSelect, goSmoothScroll, goCellEllipsis]
+            ParentDoubleBuffered = False
+            ParentFont = False
+            RowCount = 12
+            TabOrder = 0
+            OnColRowInserted = rFListColRowInserted
+            OnEnter = rFListEnter
+            OnHeaderSized = rFListHeaderSized
+            Directory = 'd:'
+            OnFileSelect = rFListFileSelect
+            OnDirChange = rFListDirChange
+            SelectedItem = '$Recycle.Bin'
+            FilesColorUse = True
+            FilesColor = <            
+              item
+                Key = '.exe'
+                Value = '$00C9A117'
+              end            
+              item
+                Key = '.bat'
+                Value = '$00C9A117'
+              end            
+              item
+                Key = '.jpg'
+                Value = '$003DBE71'
+              end>
+            ColWidths = (
+              200
+              64
+              64
+            )
+            Cells = (
+              28
+              0
+              0
+              'Имя'
+              0
+              1
+              '$RECYCLE.BIN'
+              0
+              2
+              'Boot'
+              0
+              3
+              'Code'
+              0
+              4
+              'Games'
+              0
+              5
+              'gitReps'
+              0
+              6
+              'Software'
+              0
+              7
+              'System Volume Information'
+              0
+              8
+              'temp'
+              0
+              9
+              'bootmgr'
+              0
+              10
+              'BOOTNXT'
+              0
+              11
+              'BOOTSECT.BAK'
+              1
+              0
+              'Размер'
+              1
+              1
+              '<папка>'
+              1
+              2
+              '<папка>'
+              1
+              3
+              '<папка>'
+              1
+              4
+              '<папка>'
+              1
+              5
+              '<папка>'
+              1
+              6
+              '<папка>'
+              1
+              7
+              '<папка>'
+              1
+              8
+              '<папка>'
+              1
+              9
+              '434,55 кб'
+              1
+              10
+              '1 б'
+              1
+              11
+              '8,00 кб'
+              2
+              0
+              'Дата'
+              2
+              9
+              '11:03:25 22:51:30'
+              2
+              10
+              '07:05:22 08:19:40'
+              2
+              11
+              '13:07:24 09:45:12'
+            )
+          end
+          object EditRightPath: TEdit
+            Cursor = crHandPoint
+            Left = 0
+            Height = 18
+            Top = 50
+            Width = 520
+            Align = alTop
+            AutoSize = False
+            BorderStyle = bsNone
+            Color = clActiveCaption
+            TabStop = False
+            TabOrder = 1
+            Text = 'EditRightPath'
+            OnClick = EditRightPathClick
+          end
+          object Panel2: TPanel
+            Left = 0
+            Height = 50
+            Top = 0
+            Width = 520
+            Align = alTop
+            BevelOuter = bvNone
+            ClientHeight = 50
+            ClientWidth = 520
+            TabOrder = 2
+            object rightFreeSpaceLabel: TLabel
+              Left = 130
+              Height = 15
+              Top = 28
+              Width = 106
+              Caption = 'rightFreeSpaceLabel'
+            end
+            object ToolBar2: TToolBar
+              Left = 405
+              Height = 27
+              Top = 23
+              Width = 115
+              Align = alRight
+              Caption = 'ToolBar2'
+              EdgeOuter = esNone
+              ShowCaptions = True
+              TabOrder = 0
+              Transparent = True
+              object ToolButton14: TToolButton
+                Left = 1
+                Top = 1
+                Caption = '\'
+                OnClick = ToolButton14Click
+              end
+              object ToolButton15: TToolButton
+                Left = 24
+                Top = 1
+                Caption = '..'
+                OnClick = ToolButton15Click
+              end
+              object ToolButton16: TToolButton
+                Left = 47
+                Top = 1
+                Caption = '<'
+                OnClick = ToolButton16Click
+              end
+              object ToolButton17: TToolButton
+                Left = 70
+                Top = 1
+                Caption = '>'
+                OnClick = ToolButton17Click
+              end
+              object ToolButton19: TToolButton
+                Left = 93
+                Top = 1
+                Caption = '*'
+                OnClick = ToolButton19Click
+              end
+            end
+            object ToolBar4: TToolBar
+              Left = 0
+              Height = 27
+              Top = 23
+              Width = 120
+              Align = alLeft
+              ButtonHeight = 22
+              ButtonWidth = 120
+              EdgeOuter = esNone
+              Images = ImageList1
+              List = True
+              ParentColor = False
+              ShowCaptions = True
+              TabOrder = 1
+              Transparent = True
+              Wrapable = False
+              object rdrvbtn: TToolButton
+                Left = 1
+                Top = 1
+                DropdownMenu = rDrivesMenu
+                Style = tbsButtonDrop
+              end
+            end
+            object Panel4: TPanel
+              Left = 0
+              Height = 23
+              Top = 0
+              Width = 520
+              Align = alTop
+              BevelOuter = bvNone
+              ClientHeight = 23
+              ClientWidth = 520
+              TabOrder = 2
+              object rightDrvBtn: TToolBar
+                Left = 0
+                Height = 23
+                Top = 0
+                Width = 420
+                Align = alClient
+                ButtonHeight = 22
+                ButtonWidth = 40
+                EdgeInner = esNone
+                EdgeOuter = esRaised
+                Images = ImageList1
+                List = True
+                ShowCaptions = True
+                TabOrder = 0
+                Wrapable = False
+                object ToolButton8: TToolButton
+                  Left = 1
+                  Top = 1
+                  Caption = 'ToolButton8'
+                end
+              end
+              object rightPB: TProgressBar
+                Left = 420
+                Height = 23
+                Top = 0
+                Width = 100
+                Align = alRight
+                TabOrder = 1
+                Visible = False
+              end
+            end
+          end
+        end
+        object RightImgTab: TTabSheet
+          Caption = 'RightImgTab'
+          ClientHeight = 684
+          ClientWidth = 520
+          object rlimg: TImage
+            Left = 0
+            Height = 684
+            Top = 0
+            Width = 520
+            Align = alClient
+            Center = True
+            Proportional = True
+            Stretch = True
+            StretchOutEnabled = False
+            Transparent = True
+          end
+        end
+      end
+    end
+    object leftPanel: TPanel
+      Left = 1
+      Height = 714
+      Top = 1
+      Width = 487
+      Align = alLeft
+      BevelOuter = bvLowered
+      ClientHeight = 714
+      ClientWidth = 487
+      TabOrder = 1
+      object PageControl1: TPageControl
+        Left = 1
+        Height = 712
+        Top = 1
+        Width = 485
+        TabStop = False
+        ActivePage = LeftFileTab
+        Align = alClient
+        TabIndex = 0
+        TabOrder = 0
+        object LeftFileTab: TTabSheet
+          Caption = 'LeftFileTab'
+          ClientHeight = 684
+          ClientWidth = 477
+          object lFList: TFileListGrid
+            Left = 0
+            Height = 616
+            Top = 68
+            Width = 477
+            Align = alClient
+            Color = 15134448
+            ColCount = 3
+            DefaultRowHeight = 22
+            DoubleBuffered = True
+            FixedCols = 0
+            Flat = True
+            Font.Height = -13
+            GridLineStyle = psClear
+            MouseWheelOption = mwGrid
+            Options = [goFixedVertLine, goFixedHorzLine, goVertLine, goHorzLine, goRangeSelect, goColSizing, goRowSelect, goSmoothScroll, goCellEllipsis]
+            ParentDoubleBuffered = False
+            ParentFont = False
+            RowCount = 12
+            TabOrder = 0
+            OnEnter = lFListEnter
+            OnHeaderSized = lFListHeaderSized
+            OnSelectCell = lFListSelectCell
+            Directory = 'd:'
+            OnFileSelect = lFListFileSelect
+            OnDirChange = lFListDirChange
+            SelectedItem = '$Recycle.Bin'
+            FilesColorUse = True
+            FilesColor = <            
+              item
+                Key = '.exe'
+                Value = '$00C9A117'
+              end            
+              item
+                Key = '.bat'
+                Value = '$00C9A117'
+              end            
+              item
+                Key = '.jpg'
+                Value = '$003DBE71'
+              end>
+            ColWidths = (
+              167
+              166
+              166
+            )
+            Cells = (
+              28
+              0
+              0
+              'Имя'
+              0
+              1
+              '$RECYCLE.BIN'
+              0
+              2
+              'Boot'
+              0
+              3
+              'Code'
+              0
+              4
+              'Games'
+              0
+              5
+              'gitReps'
+              0
+              6
+              'Software'
+              0
+              7
+              'System Volume Information'
+              0
+              8
+              'temp'
+              0
+              9
+              'bootmgr'
+              0
+              10
+              'BOOTNXT'
+              0
+              11
+              'BOOTSECT.BAK'
+              1
+              0
+              'Размер'
+              1
+              1
+              '<папка>'
+              1
+              2
+              '<папка>'
+              1
+              3
+              '<папка>'
+              1
+              4
+              '<папка>'
+              1
+              5
+              '<папка>'
+              1
+              6
+              '<папка>'
+              1
+              7
+              '<папка>'
+              1
+              8
+              '<папка>'
+              1
+              9
+              '434,55 кб'
+              1
+              10
+              '1 б'
+              1
+              11
+              '8,00 кб'
+              2
+              0
+              'Дата'
+              2
+              9
+              '11:03:25 22:51:30'
+              2
+              10
+              '07:05:22 08:19:40'
+              2
+              11
+              '13:07:24 09:45:12'
+            )
+          end
+          object Panel3: TPanel
+            Left = 0
+            Height = 50
+            Top = 0
+            Width = 477
+            Align = alTop
+            BevelOuter = bvNone
+            ClientHeight = 50
+            ClientWidth = 477
+            TabOrder = 1
+            object leftFreeSpaceLabel: TLabel
+              Left = 130
+              Height = 15
+              Top = 28
+              Width = 98
+              Caption = 'leftFreeSpaceLabel'
+            end
+            object ToolBar1: TToolBar
+              Left = 362
+              Height = 27
+              Top = 23
+              Width = 115
+              Align = alRight
+              Caption = 'ToolBar1'
+              EdgeOuter = esNone
+              ShowCaptions = True
+              TabOrder = 0
+              Transparent = True
+              object ToolButton10: TToolButton
+                Left = 1
+                Top = 1
+                Caption = '\'
+                OnClick = ToolButton10Click
+              end
+              object ToolButton11: TToolButton
+                Left = 24
+                Top = 1
+                Caption = '..'
+                OnClick = ToolButton11Click
+              end
+              object ToolButton12: TToolButton
+                Left = 47
+                Top = 1
+                Caption = '<'
+                OnClick = ToolButton12Click
+              end
+              object ToolButton13: TToolButton
+                Left = 70
+                Top = 1
+                Caption = '>'
+                OnClick = ToolButton13Click
+              end
+              object ToolButton18: TToolButton
+                Left = 93
+                Top = 1
+                Caption = '*'
+                OnClick = ToolButton18Click
+              end
+            end
+            object ToolBar3: TToolBar
+              Left = 0
+              Height = 27
+              Top = 23
+              Width = 120
+              Align = alLeft
+              ButtonHeight = 22
+              ButtonWidth = 120
+              EdgeOuter = esNone
+              Images = ImageList1
+              List = True
+              ParentColor = False
+              ShowCaptions = True
+              TabOrder = 1
+              Transparent = True
+              Wrapable = False
+              object ldrvbtn: TToolButton
+                Left = 1
+                Top = 1
+                DropdownMenu = ldrivesMenu
+                Style = tbsButtonDrop
+              end
+            end
+            object Panel1: TPanel
+              Left = 0
+              Height = 23
+              Top = 0
+              Width = 477
+              Align = alTop
+              BevelOuter = bvNone
+              ClientHeight = 23
+              ClientWidth = 477
+              TabOrder = 2
+              object leftDrvBtn: TToolBar
+                Left = 0
+                Height = 23
+                Top = 0
+                Width = 377
+                Align = alClient
+                ButtonHeight = 22
+                ButtonWidth = 40
+                EdgeInner = esNone
+                EdgeOuter = esRaised
+                Images = ImageList1
+                List = True
+                ShowCaptions = True
+                TabOrder = 0
+                Wrapable = False
+                object ToolButton9: TToolButton
+                  Left = 1
+                  Top = 1
+                  Caption = 'ToolButton8'
+                end
+              end
+              object leftPB: TProgressBar
+                Left = 377
+                Height = 23
+                Top = 0
+                Width = 100
+                Align = alRight
+                TabOrder = 1
+                Visible = False
+              end
+            end
+          end
+          object EditLeftPath: TEdit
+            Cursor = crHandPoint
+            Left = 0
+            Height = 18
+            Top = 50
+            Width = 477
+            Align = alTop
+            AutoSize = False
+            BorderStyle = bsNone
+            Color = clActiveCaption
+            TabStop = False
+            TabOrder = 2
+            Text = 'EditLeftPath'
+            OnClick = EditLeftPathClick
+          end
+        end
+        object LeftImgTab: TTabSheet
+          Caption = 'LeftImgTab'
+          ClientHeight = 684
+          ClientWidth = 477
+          object llimg: TImage
+            Left = 0
+            Height = 684
+            Top = 0
+            Width = 477
+            Align = alClient
+            Center = True
+            Proportional = True
+            Stretch = True
+            StretchOutEnabled = False
+            Transparent = True
+          end
+        end
+      end
+    end
+    object Splitter1: TSplitter
+      Left = 488
+      Height = 714
+      Top = 1
+      Width = 5
+      PopupMenu = splitterMenu
+    end
+  end
+  object MainMenu1: TMainMenu
+    Left = 296
+    Top = 208
+    object MenuItem2: TMenuItem
+      Caption = 'Файл'
+      object MenuItem3: TMenuItem
+        Action = ActionExit
+      end
+    end
+  end
+  object splitterMenu: TPopupMenu
+    Left = 496
+    Top = 248
+    object MenuItem1: TMenuItem
+      Action = split50percent
+    end
+  end
+  object ActionList1: TActionList
+    Images = ImageList1
+    Left = 480
+    Top = 464
+    object split50percent: TAction
+      Caption = '50|50'
+      OnExecute = split50percentExecute
+    end
+    object ActionExit: TAction
+      Caption = 'ActionExit'
+      OnExecute = ActionExitExecute
+    end
+    object ActionRename: TAction
+      Caption = 'ActionRename'
+      ImageIndex = 0
+      OnExecute = ActionRenameExecute
+      ShortCut = 113
+    end
+    object ActionView: TAction
+      Caption = 'ActionView'
+      ImageIndex = 1
+      OnExecute = ActionViewExecute
+      ShortCut = 114
+    end
+    object ActionEdit: TAction
+      Caption = 'ActionEdit'
+      ImageIndex = 2
+      OnExecute = ActionEditExecute
+      ShortCut = 115
+    end
+    object ActionCopy: TAction
+      Caption = 'ActionCopy'
+      ImageIndex = 3
+      OnExecute = ActionCopyExecute
+      ShortCut = 116
+    end
+    object ActionMov: TAction
+      Caption = 'ActionMove'
+      ImageIndex = 4
+      OnExecute = ActionMovExecute
+      ShortCut = 117
+    end
+    object ActionNewFold: TAction
+      Caption = 'ActionNewFold'
+      ImageIndex = 5
+      OnExecute = ActionNewFoldExecute
+      ShortCut = 118
+    end
+    object ActionDel: TAction
+      Caption = 'ActionDel'
+      ImageIndex = 6
+      OnExecute = ActionDelExecute
+      ShortCut = 119
+    end
+    object ActionDel2: TAction
+      Caption = 'ActionDel2'
+      ImageIndex = 6
+      OnExecute = ActionDel2Execute
+      ShortCut = 46
+    end
+  end
+  object ImageList1: TImageList
+    Left = 400
+    Top = 288
+    Bitmap = {
+      4C7A0C0000001000000010000000F50E00000000000078DAED9A09545457B686
+      0FA693BCA82F8D49B789A657F7EA7688090EB4895327186C8D0D4F139544C4A5
+      2812850782518CC8242832098AB358088A13088802CA20080822638108282028
+      F33C88088A38ECB7F7A1AA72AB2CA0487AAD7EDDCBCBFAD6B975CEF94FEDAABA
+      FFDEE752C53CB21993215E83EC5091355CE39E25C439A20BE04247FFD01C9A4B
+      9AB774D733E69629C5E5FC4380A09697FD4273682E69860F1FCE868CF98C3197
+      34C22DB8ED059C697C0E3BE332C1D8EB885C4BFD04CDA1B9A4E1FA21437AD7D8
+      99BA2BB0F9399CAC7B266395EB7EB9C704CDA1B9081B3162C4725C632B67ACE6
+      31EB5D7B608BFBCF58B9EDE6ADDDF160F0AF7ECA39DDF00CD88E642F84696969
+      6D2C2F2F87BE707373E3ED9E93E7E068F963CEC9861E604E89DECC3191E9E9E9
+      59D6D7D743E3CE3590B1F6EF10A6331E62753F86BB2B6601F56FDBB68DB73EA1
+      9170A8B4138ED73C05876BF7816D8BDF8F7C666C6CBCFEE1C3874AF5D4BF65CB
+      16DEFA47C681CFFDC7609B500636C8CB97F81EDAC71EFAF1C71FCD7A7A7AA02F
+      2C2D2D797B2AF61A1CB8DB0966613779DBDDFD08986D948FADADEDB7767676A6
+      84A1ADDBE1A08434381B9F2AE3DB956B787B382107BCEF7480498898B7EDED75
+      C0AC237C51C71C1C1C98A1DD2EC67EBAE0EF59D00ECE39CD323417E8CBCE69CC
+      383083B78D8DA540F3493F7B85196356A144807BDE0370CA6A047D0F7F98F8F5
+      62582A69E9318DAD3E7D83B72F33E700CD67D243CF9E318BD3E75C72DBC021BD
+      412934B6EC58026F3BA32703CD97A887221FB01F0E5F76BBD90E3BB25B954263
+      0BF646F096E6B27926F325FAF791496CBE991F5BE995A412F3CD445CE74E1EFE
+      05DE97EA7EF6FE4E0FBCBE8C921B617552136C2FE804BFEA1770AA0EE4086CE2
+      DEDF29D3B96648710D435F873E780987AABA6143462BCCF5B902DE3171721CBC
+      1A0F1FB9841F99BDC39B6939ED46CFDF90E22EF53E11F2E005585ECC81D6D61A
+      E8ECAC47AAA1A3A31252522260BE936BAC8383DE385BDBC58C39A748F1147A9F
+      CE8DCF65426969211417DF84E6E67BE8A33B101D7D16E840AD19328E39253109
+      7BC8D7428F1B9C4881B2B222BE065DAFB4C699330765E8EA8E73400F3209FB8E
+      D73E95799CCEF5FD92E0FEFD12BE4667678B6C0D8A835ECBA64D3A16E84126E1
+      D0B1CA27DCE3049DEB89AE62EE28E56B74753D905BE3D1A36AB0B098B781D95C
+      66127CC8DFFB8A3B3874BEE8482C5456DEE36B3C79F2506E8DC78F1BC0D4547B
+      23B30E67128E91AFBD0ADB3974BEF04034EACBF91ADDDD9D726B7477B781B1F1
+      97566C9933639BCF13C7C9D7EE79AD1C3AD7D91B095555957C8D9E9EC7726BF4
+      F47480A1E18C9FF8D5FFBD23633F069D117A9FCEE77B5D84EAEA2ABEC6B367DD
+      726BF4F4748281C1546B54BF83BCC74C44911E12EF13E4F179BBCE434D4D0D5F
+      E3F9F367726B3C7BD6058B164DDC86DA11C85836DFFCE8B47D091D66B1F77A9C
+      B35BC0153D3EC7ED1CD4D6D622353C5FBE7CF91C5EBCE8C1B59EE2F953F8E28B
+      8F3C64F963F2D78CAD132D666B7D447FB00BBEA67736A7E2EDEFB7568D1B37F4
+      A086C670CF4993FEDB5D9131638699CBE9D7FA30667C90B155DE9A6CE56E0766
+      E0721847FE848CEE8311BFAAF6CBD7FF41D77ECEAFA8FD9CDEBA2F57FBFB4358
+      FB3958C325BC52FB9521ACFD1CACE112BC84FEEF0B61EDE738254AF116FABF2F
+      84B59F39263041FED82FF4BF75581B68FEA316369E6D92F529D67EE610C784F9
+      43EA7F8F1B65B0C6FD0A6CDF0E30765AB22C1F28D67EAEB38D92E2439E37CFA8
+      828DBE21E8B127F03FEB45B0EE58A92C1F28D67EAEB38E90E26B99550313CEA5
+      806DDD13D0B7F704AB8B6972F940B1F6739DDD79A6B63B8AA9ED888CFA24B857
+      FB970321607C394F6E1FA0ACF623F8BE0733B553715FA9EDBB5843DA3FEF0F01
+      43D44AF380301FBC52FB69CFE018345ECD273CAAF779436145C44DD56B3FEE19
+      D4CCBD5D4A3A01D46C0FB718C7DC56BDF66B1B2D91EC1B404DC7E88ADA42CBF0
+      41D47E3FD44DE4796F9E0979BF97C1ED05D608E60BD6E8DD0BF4970B243940B2
+      0750D0534E714D770D6DC7BD42F34BA5D018CD4194C7EB9699FA5D5C0D2C89A9
+      966172BD114ED53FE304B5BC200F7B70FFAA18EF37972B957B986250215EDDF0
+      7BDCBFC7AA9EC0D1B20EF4708237DB76F5BF2479C4836292C6A7088D7D1D7A17
+      8EDCEB8283C5ED60195100DAFEE230F4EF1655720F8D690715F11C607E210FBC
+      6EB5F01AC66CA30F631C8C62A1DCA02CDF48E3FDF2743E78163E9479B0A5A502
+      3D1829E239C421EE80A8E2317AFB911CC278CD63CA60616871AF07F3DB7B3DF4
+      53983FC6C0280E8A6DCFED763914E39DE99F0B8627AF83EB4D898736069FC218
+      18C521DC3B28CB1914EF74DF6C587C28BAD743A6BEE1ECDB2D5A1803A3382826
+      6771B31CD42717AFC5E93A66B83B81F30F735FF4CF5FD852274671504CDB321A
+      E4A03EB978CD03CEBF527F1953A758282667F4B910EA938B77DEBA05ECA3094C
+      E1F813C62292C5D517D278158FD7F5FF3FB2FE2B43D5FAAF8CBEEABFD9762BB9
+      FA7FFD921B845D0B97DD0708EF0794D5FF7CF7C92CC0558FD77FF2696EC04A4E
+      505C689F5E16D6FF3CD749225C431CEDA2DD927A6429A41CFE1EA0D687B7272E
+      050E58FFAFDB8E1143F54180DBE600B70C7FA6643344EF5A3060FD8FB118258A
+      32FF507CCC5CA32DD4712E043BCC01B83193B7FB03FD07ACFF921A3E527AEF7F
+      C2EA6F9CFD678FAB5AFFDFE3B55C72EF6FBC747ABDB6C1F7452AD7FFD7FE7FED
+      FF5FE1FF77BC56B077BC4DD8BBA2AF6E4FBEF457F83ADEE815EFF7E7FFF7FCF1
+      223CF1161B71FCC3E62D6D6B41236CCA2B75BC3FFFBFE7C744B88658FDE8872D
+      26CD4B6142D014CE57E1AB54DAFFAB1F6662BDFA39A0C8F880292AEDFFDFDDC3
+      44EFEE66E2E1EE1FB469554D84B1472773FE76C650A5FDBFD4FF431D47B66B94
+      8F8631FB3507BBFFE7FEFFCDA211D7DF341DF9E837269FD50F6AFFFFDAFFAFFD
+      FF2BFCCFB42ECAD57F65DEEFF7FE9F0531F6C7F3B2FAAFCCFBFDDEFFB34011AE
+      2166EAE75AFEF069348CFE248A334D2F45B5FB7F7654BC6AD5135064D48473AA
+      DDFF33177CFEEDF8FCAE6D1F7D72047587385317870ECAFF83FEDF7F1FF57FB0
+      F7FF8076FA77464F4F8F2D5DBAF473C474907C4EDA254B96FCCEDCDC7C2BFF0E
+      ACB111AAAAABA1B4AC0C0A6FDF86DCBC3C108BC59083E4218548315271EB16FC
+      EFBA755B49FBCD37DF7C72E0C08180D6D656B87BF72E1414164236CEB97EE306
+      242425417C7C3C5C45929054240329C3712F179700D2EAEAEA6A878686260E56
+      1F70E4482269E7CD9BB72C2B2BAB8C62CFCFCFEFD5A6A6427C420244C5C4C0A5
+      4B97E03212835C45AE21C5191970352CAC8CB4B367CF5E5F575707CF9F3F8727
+      DDDDF0B0A3039A9A9BA1A6B616CA2B2AE0DEBD7B701FA940AA917AA419B98DCF
+      41DA9933676E6E6B6B83E292121E7B4E6E2EA4E3FAC9292990803148E34F4492
+      85AF212707483B75EA546BFA1F7944045EDBEEEEE0BC7327383A39819DBD3DD8
+      D8D880CDD6AD60873822CE881B62827F05F8FCA4FDF8E38FED232323CB29CE32
+      E44E5111E4E1E793959D0D696969908AF36E20E948169283D0F39F1189CA493B
+      7CF8703D757575D75F0269D1436FF7F3FFF58178FBFF8387F03A96819EF8F6BB
+      EFBE335584FAA573464EFCBD9C5E4747478865434303545555712A2B2BF97728
+      D42F9C27D4E3752064B348248242BC96C803743DD163EA17CE13EADF7FFF7D19
+      23478EDC29CECC846BF8194B49C6EB90FA85F3847A353535293B90F31B366C00
+      45A85F32CEE7F6A1BFE0E2E2025BF11AF5F3F3E3DF139E3871021C1D1D81FA69
+      7C007D387D5F6F6161C1FD58829EA276F3E6CDFC7B7C1A1F407FC9CECE0ECCCC
+      CC60D9B265F0F4E95358BE7C396CDCB811A89FC607D0C7585B5BC3BA75EBC0C4
+      C404BABABA60FDFAF5BCA57E1A1F401F676565C57F2F606C6CCC5B4F4F4FDE52
+      3F8D0FA04FA4F79A72616060206F097A3F259F41E200FA14CCE5FCFDA27C48E0
+      F50A46464640FD343E803E8D5E37D606C0DCCCBFBB5BB16205AC5CB992BF1F34
+      AE4C4F87A43F7BEDDAB5805E81C4C4447EFD27610EA7CF80FA699CE6D1A1A0A7
+      3AFE2192B860C1822E030303FE7ED1EF3EE8B5AC5EBD1AA89FC69151C83005FD
+      EF104DC404C14D35AB53429664FCAFB4DF785D7F5FD7DF7F66FD4D4B4F87800B
+      E170E276075C89E884FCE006A828AE86DAFA6AA86FA883A6A6267C0DF72130E0
+      24448584BC527F353434C27DA3621F0457D4427863179C0D0C4DD7D2D2DA4784
+      8484A437D73542EDDD0A48BA7CE501CD55ACBF3366CC70C8CE48EFC9C1BA7F1F
+      7DA3AFAFBF67ECD8B1A3093A6FA8AC81D2DC42B89399D74373A5F597CC3361C2
+      04367DFAF4D5497157CA4B0A0BA012AFBFE8E8A844CC7DF644485444A267632C
+      9C2E8A87A0988BE534973474686A6A72A64C993271B98181775141417B435D2D
+      B4E06758DF500BA525A57013DF0BB7E40C985373B47DC62A5D6F9A2BD549993C
+      79321B3D7AF497F89E7AE0F59C9A932B6EB85352D0939999D173C937B9C1D178
+      7FEA844FA778D01C9AAB4C8F358EBDF9E69BA390258815E22AC14AD2378AE608
+      F5FF0CFFFF821CF0B95427D953500EB0A11C508F7B07BAEE691F7753E2FF5C24
+      1F2942CA7BBD6F431AD22E5CB890097300D54CDAFFA5A1079224FE4D40529074
+      A454E07DD2A287993007A8A2977A9FB4E86126CC01B7509B81FB8FC46BD72046
+      E2FF28240E49428A04DE272D7A98B090E680AEC78FA115FD5C5B5F0FE5B87792
+      FABF12A9439A7EF6BE0569A57B269E038A8BF9F3676665F11C9480354898BFAE
+      4B5E03E52FE97E0AAF37269703DCDC6087B333D8E37EC3C6D696FBDF1ED9A1C4
+      FBA4A5DF4F928F515B5E86BEA11C9A5F500062CC2F9413A4FBEF0C444CFB70F9
+      BD3759E88FD8EA2BDB5F0F1B36EC24D1C7DE5B9FB4C86FF96FE714F6D66F69F0
+      D68D909C2BF28144ABF4F87D2013A96F636282CE59DF07D5DE198829FD330149
+      42C4EF2C6462E3A62540D039F5219908FDE68F7EB7F4153D0DF216F2AE24A6F1
+      923AFED9D0F56CEFB0ED4C4CD039F549F854F2BAD549FBEF7EFFFEAFE68D2D6F
+      EC45127F017BB97ED31B499BD23681658AA5CAD07CD271BDE51BC93FC4FE40F7
+      4780F908E6CE9D0B738FCEEDF731CD271DE987980EB9AE1FA20FDADADA80F769
+      306BD62CD03AA0D5EF639A4F3AAE371A7243C75F07B0A6CA98E639ADDFC7349F
+      745CBF7C4886AEEF0FF0C5BE2F60BE8F914A2DCD271DD72F1992E598721FC6DB
+      8F87C1B4A4E37BF7496A7E8B3CED6BD566A9650FAA459D60EFFDC120EFDB69FE
+      D0FF84EBFFFF003DAD5BF6
+    }
+  end
+  object ldrivesMenu: TPopupMenu
+    Images = ImageList1
+    Left = 410
+    Top = 150
+    object MenuItem4: TMenuItem
+      Caption = 'MenuItem4'
+    end
+  end
+  object rDrivesMenu: TPopupMenu
+    Images = ImageList1
+    Left = 411
+    Top = 206
+  end
+end

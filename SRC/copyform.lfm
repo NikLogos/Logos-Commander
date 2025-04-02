@@ -1,0 +1,74 @@
+object copyF: TcopyF
+  Left = 574
+  Height = 280
+  Top = 354
+  Width = 640
+  BorderStyle = bsDialog
+  Caption = 'Copy'
+  ClientHeight = 280
+  ClientWidth = 640
+  OnCreate = FormCreate
+  OnDestroy = FormDestroy
+  Position = poMainFormCenter
+  LCLVersion = '3.8.0.0'
+  object Panel1: TPanel
+    Left = 20
+    Height = 40
+    Top = 5
+    Width = 600
+    Align = alTop
+    BorderSpacing.Left = 20
+    BorderSpacing.Top = 5
+    BorderSpacing.Right = 20
+    BevelOuter = bvNone
+    ClientHeight = 40
+    ClientWidth = 600
+    TabOrder = 0
+    object Label1: TLabel
+      Left = 0
+      Height = 1
+      Top = 0
+      Width = 600
+      Align = alTop
+    end
+    object copyProgressBar: TProgressBar
+      Left = 0
+      Height = 39
+      Top = 1
+      Width = 600
+      Align = alClient
+      TabOrder = 0
+    end
+  end
+  object Panel2: TPanel
+    Left = 5
+    Height = 225
+    Top = 50
+    Width = 630
+    Align = alClient
+    BorderSpacing.Left = 5
+    BorderSpacing.Top = 5
+    BorderSpacing.Right = 5
+    BorderSpacing.Bottom = 5
+    BevelOuter = bvNone
+    ClientHeight = 225
+    ClientWidth = 630
+    TabOrder = 1
+    object LogList: TListBox
+      Left = 0
+      Height = 225
+      Top = 0
+      Width = 630
+      Align = alClient
+      ItemHeight = 0
+      TabOrder = 0
+    end
+  end
+  object CpyTimer: TTimer
+    Enabled = False
+    Interval = 100
+    OnTimer = CpyTimerTimer
+    Left = 32
+    Top = 96
+  end
+end

@@ -1,0 +1,47 @@
+object dlgForm: TdlgForm
+  Left = 490
+  Height = 90
+  Top = 316
+  Width = 400
+  BorderStyle = bsDialog
+  Caption = 'dlgForm'
+  ClientHeight = 90
+  ClientWidth = 400
+  KeyPreview = True
+  OnKeyDown = FormKeyDown
+  OnKeyPress = FormKeyPress
+  Position = poMainFormCenter
+  LCLVersion = '3.8.0.0'
+  object btn1: TButton
+    Left = 120
+    Height = 25
+    Top = 55
+    Width = 75
+    Caption = 'btn1'
+    ModalResult = 1
+    TabOrder = 1
+  end
+  object btn2: TButton
+    Left = 205
+    Height = 25
+    Top = 55
+    Width = 75
+    Caption = 'btn2'
+    ModalResult = 2
+    TabOrder = 2
+  end
+  object dlgEdit: TEdit
+    Left = 10
+    Height = 23
+    Top = 20
+    Width = 380
+    TabOrder = 0
+  end
+  object promptLbl: TLabel
+    Left = 10
+    Height = 15
+    Top = 5
+    Width = 56
+    Caption = 'promptLbl'
+  end
+end
