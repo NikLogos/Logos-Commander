@@ -84,6 +84,7 @@ const
 
 
   function DeleteToRecycleBin(const FilePath: string): Boolean;
+  function MoveFileOrFolder(const SourcePath, DestPath: string; NewName: string = ''): Boolean;
 
 implementation
 
@@ -145,6 +146,59 @@ begin
         begin
           // Выполняем операцию
           Result := SUCCEEDED(FileOp.PerformOperations);
+        end;
+      end;
+    end;
+  finally
+    OleUninitialize;
+  end;
+end;
+
+function MoveFileOrFolder(const SourcePath, DestPath: string; NewName: string
+  ): Boolean;
+var
+  FileOp: IFileOperation;
+  SourceItem, DestFolder: IShellItem;
+  pSourceItem, pDestFolder: Pointer;
+  SourcePathW, DestPathW, NewNameW: WideString;
+begin
+  Result := False;
+  SourcePathW := UTF8Decode(SourcePath);
+  DestPathW := UTF8Decode(DestPath);
+  if NewName <> '' then
+    NewNameW := UTF8Decode(NewName)
+  else
+    NewNameW := '';
+
+  OleInitialize(nil);
+  try
+    if SUCCEEDED(CoCreateInstance(CLSID_FileOperation, nil, CLSCTX_ALL,
+                  IID_IFileOperation, FileOp)) then
+    begin
+      // Устанавливаем флаги операции
+      FileOp.SetOperationFlags(FOF_ALLOWUNDO or FOF_NOCONFIRMATION or
+                              FOF_NOERRORUI or FOF_SILENT);
+
+      // Создаем ShellItem для исходного файла/папки
+      if SUCCEEDED(SHCreateItemFromParsingName(PWideChar(SourcePathW),
+                                              nil, IID_IShellItem, pSourceItem)) then
+      begin
+        SourceItem := IShellItem(pSourceItem);
+
+        // Создаем ShellItem для папки назначения
+        if SUCCEEDED(SHCreateItemFromParsingName(PWideChar(DestPathW),
+                                                nil, IID_IShellItem, pDestFolder)) then
+        begin
+          DestFolder := IShellItem(pDestFolder);
+
+          // Выполняем перемещение
+          if NewNameW = '' then
+            Result := SUCCEEDED(FileOp.MoveItem(SourceItem, DestFolder, nil, nil))
+          else
+            Result := SUCCEEDED(FileOp.MoveItem(SourceItem, DestFolder, PWideChar(NewNameW), nil));
+
+          if Result then
+            Result := SUCCEEDED(FileOp.PerformOperations);
         end;
       end;
     end;
