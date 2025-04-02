@@ -70,6 +70,8 @@ const
    LngCopyProgressNo = 'Нет';
    lngBtnYes = 'Ок';
    lngBtnNo = 'Отмена';
+   lngRenameItem  = 'Переименовать';
+   lngRenameItemPrompt = 'Введите новое имя:';
 
 type
 
@@ -216,6 +218,8 @@ type
 
     procedure init;
     procedure fin;
+
+    function itbs(path:string):string;
   public
 
 
@@ -697,6 +701,11 @@ begin
   freeandnil(inifile);
 end;
 
+function TmForm.itbs(path: string): string;
+begin
+  result:=includetrailingbackslash(path);
+end;
+
 procedure TmForm.FormCreate(Sender: TObject);
 begin
   init;
@@ -884,9 +893,24 @@ end;
 procedure TmForm.ActionRenameExecute(Sender: TObject);
 var
  tmp:string;
+ pTmp:TFilelistGrid;
 begin
-  if dlgform.getDlg('cap','prompt','def','Да','нет', tmp)
-  then showmessage(inttostr(dlgform.ModalResult)+':'+tmp);
+  if lflist.Focused then ptmp:=lflist else ptmp:=rflist;
+
+  if dlgform.getDlg(lngRenameItem,lngRenameItemPrompt,ptmp.SelectedItem,lngBtnYes,lngBtnNo, tmp)
+  then
+    if
+     (
+     ((directoryexists(itbs(ptmp.Directory)+ptmp.SelectedItem)) and not (directoryexists(itbs(ptmp.Directory)+tmp)))
+     or
+     ((fileexists(itbs(ptmp.Directory)+ptmp.SelectedItem)) and not (fileexists(itbs(ptmp.Directory)+tmp)))
+     )
+    then
+      try
+        renamefile(itbs(ptmp.Directory)+ptmp.SelectedItem,itbs(ptmp.Directory)+tmp);
+      except
+        on E: Exception do ShowMessage('Error: '+ E.Message );
+      end;
 end;
 
 procedure TmForm.ActionViewExecute(Sender: TObject);

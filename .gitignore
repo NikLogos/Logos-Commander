@@ -2,3 +2,6 @@ SRC/lc.exe
 /SRC/lib
 /SRC/pic/template
 /SRC/tools
+/SRC/backup
+SRC/heaptrace.trc
+/SRC/backup
