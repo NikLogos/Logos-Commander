@@ -215,6 +215,7 @@ type
     function getVersion:string;
     procedure doCopy;
     procedure doDeleteToBin;
+    procedure doMove;
 
     procedure init;
     procedure fin;
@@ -598,6 +599,73 @@ begin
   tmp.Free;
 end;
 
+procedure TmForm.doMove;
+var
+  tmp:tstringlist;
+  counter:integer;
+  pbar:tprogressbar;
+  dest:string;
+begin
+  if lowercase(lflist.Directory[1]+lflist.Directory[2]) = lowercase(rflist.Directory[1]+rflist.Directory[2])
+  then begin //перемещение в пределах одного диска
+    tmp:=tstringlist.Create;
+
+    if leftPanelFocused
+    then begin
+      lflist.getSelectedItems(tmp,true);
+      dest:=itbs(rflist.Directory);
+      pbar:=leftpb;
+    end
+    else begin
+      rflist.getSelectedItems(tmp,true);
+      dest:=itbs(lflist.Directory);
+      pbar:=rightpb;
+    end;
+
+    if tmp.Count<>0 then begin
+     pbar.Max:=tmp.Count;
+     pbar.Show;
+     pbar.Step:=1;
+     for counter:=1 to tmp.Count do begin
+       MoveFileOrFolder(tmp.Strings[counter-1],dest,'');
+       pbar.StepBy(1);
+     end;
+     pbar.Hide;
+    end;
+
+    tmp.Free;
+  end else begin //разные диски
+    tmp:=tstringlist.Create;
+
+    if leftPanelFocused
+    then begin
+      lflist.getSelectedItems(tmp,true);
+      dest:=itbs(rflist.Directory);
+      pbar:=leftpb;
+    end
+    else begin
+      rflist.getSelectedItems(tmp,true);
+      dest:=itbs(lflist.Directory);
+      pbar:=rightpb;
+    end;
+
+    if tmp.Count<>0 then begin
+     pbar.Max:=tmp.Count;
+     pbar.Show;
+     pbar.Step:=1;
+     for counter:=1 to tmp.Count do begin
+       MoveFileOrFolder(tmp.Strings[counter-1],dest,'');
+       pbar.StepBy(1);
+     end;
+     pbar.Hide;
+    end;
+
+    //mThread:=TThread.ExecuteInThread(@doMoveDiffDisks,nil);
+
+    tmp.Free;
+  end;
+end;
+
 procedure TmForm.init;
 var
   counter:integer;
@@ -847,7 +915,7 @@ end;
 
 procedure TmForm.ActionMovExecute(Sender: TObject);
 begin
-
+  doMove;
 end;
 
 procedure TmForm.ActionNewFoldExecute(Sender: TObject);

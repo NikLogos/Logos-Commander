@@ -20,8 +20,8 @@
         <ComponentName Value="mForm"/>
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
-        <TopLine Value="91"/>
-        <CursorPos X="68" Y="15"/>
+        <TopLine Value="570"/>
+        <CursorPos X="41" Y="655"/>
         <UsageCount Value="200"/>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
@@ -32,7 +32,7 @@
         <UnitName Value="copyThread"/>
         <EditorIndex Value="-1"/>
         <CursorPos X="17" Y="90"/>
-        <UsageCount Value="138"/>
+        <UsageCount Value="140"/>
       </Unit>
       <Unit>
         <Filename Value="copyform.pas"/>
@@ -44,7 +44,7 @@
         <EditorIndex Value="8"/>
         <TopLine Value="140"/>
         <CursorPos X="17" Y="149"/>
-        <UsageCount Value="126"/>
+        <UsageCount Value="128"/>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
       </Unit>
@@ -52,11 +52,10 @@
         <Filename Value="ifileop.pas"/>
         <IsPartOfProject Value="True"/>
         <UnitName Value="IFileOp"/>
-        <IsVisibleTab Value="True"/>
         <EditorIndex Value="1"/>
-        <TopLine Value="145"/>
-        <CursorPos X="5" Y="208"/>
-        <UsageCount Value="93"/>
+        <TopLine Value="154"/>
+        <CursorPos X="26" Y="157"/>
+        <UsageCount Value="95"/>
         <Loaded Value="True"/>
       </Unit>
       <Unit>
@@ -66,7 +65,7 @@
         <EditorIndex Value="7"/>
         <TopLine Value="80"/>
         <CursorPos Y="106"/>
-        <UsageCount Value="42"/>
+        <UsageCount Value="44"/>
         <Loaded Value="True"/>
       </Unit>
       <Unit>
@@ -78,7 +77,7 @@
         <EditorIndex Value="5"/>
         <TopLine Value="31"/>
         <CursorPos X="26" Y="56"/>
-        <UsageCount Value="34"/>
+        <UsageCount Value="36"/>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
       </Unit>
@@ -132,7 +131,7 @@
         <EditorIndex Value="6"/>
         <TopLine Value="11381"/>
         <CursorPos Y="11398"/>
-        <UsageCount Value="17"/>
+        <UsageCount Value="18"/>
         <Loaded Value="True"/>
       </Unit>
       <Unit>
@@ -251,7 +250,7 @@
         <EditorIndex Value="9"/>
         <TopLine Value="10"/>
         <CursorPos X="38" Y="28"/>
-        <UsageCount Value="46"/>
+        <UsageCount Value="47"/>
         <Loaded Value="True"/>
       </Unit>
       <Unit>
@@ -280,7 +279,7 @@
         <EditorIndex Value="2"/>
         <TopLine Value="176"/>
         <CursorPos X="16" Y="184"/>
-        <UsageCount Value="12"/>
+        <UsageCount Value="13"/>
         <Loaded Value="True"/>
       </Unit>
       <Unit>
@@ -473,10 +472,11 @@
       <Unit>
         <Filename Value="..\..\Lazarus\Components\FListGrid\FileListGrid\filelistgrid.pas"/>
         <UnitName Value="FileListGrid"/>
+        <IsVisibleTab Value="True"/>
         <EditorIndex Value="4"/>
-        <TopLine Value="803"/>
-        <CursorPos Y="785"/>
-        <UsageCount Value="14"/>
+        <TopLine Value="374"/>
+        <CursorPos X="23" Y="397"/>
+        <UsageCount Value="15"/>
         <Loaded Value="True"/>
       </Unit>
       <Unit>
@@ -485,123 +485,18 @@
         <EditorIndex Value="3"/>
         <TopLine Value="39"/>
         <CursorPos X="59" Y="53"/>
-        <UsageCount Value="12"/>
+        <UsageCount Value="13"/>
         <Loaded Value="True"/>
+      </Unit>
+      <Unit>
+        <Filename Value="C:\lazarus\fpc\3.2.2\source\packages\fcl-process\src\process.pp"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="23"/>
+        <CursorPos X="29" Y="56"/>
+        <UsageCount Value="10"/>
       </Unit>
     </Units>
     <JumpHistory HistoryIndex="29">
-      <Position>
-        <Filename Value="main.pas"/>
-        <Caret Line="677" Column="6" TopLine="647"/>
-      </Position>
-      <Position>
-        <Filename Value="main.pas"/>
-        <Caret Line="683" Column="8" TopLine="653"/>
-      </Position>
-      <Position>
-        <Filename Value="main.pas"/>
-        <Caret Line="684" Column="8" TopLine="654"/>
-      </Position>
-      <Position>
-        <Filename Value="main.pas"/>
-        <Caret Line="685" Column="8" TopLine="655"/>
-      </Position>
-      <Position>
-        <Filename Value="main.pas"/>
-        <Caret Line="686" Column="8" TopLine="656"/>
-      </Position>
-      <Position>
-        <Filename Value="main.pas"/>
-        <Caret Line="687" Column="8" TopLine="658"/>
-      </Position>
-      <Position>
-        <Filename Value="main.pas"/>
-        <Caret Line="688" Column="15" TopLine="659"/>
-      </Position>
-      <Position>
-        <Filename Value="main.pas"/>
-        <Caret Line="690" Column="6" TopLine="661"/>
-      </Position>
-      <Position>
-        <Filename Value="main.pas"/>
-        <Caret Line="691" Column="6" TopLine="662"/>
-      </Position>
-      <Position>
-        <Filename Value="main.pas"/>
-        <Caret Line="693" Column="6" TopLine="664"/>
-      </Position>
-      <Position>
-        <Filename Value="main.pas"/>
-        <Caret Line="694" Column="6" TopLine="665"/>
-      </Position>
-      <Position>
-        <Filename Value="main.pas"/>
-        <Caret Line="696" Column="6" TopLine="667"/>
-      </Position>
-      <Position>
-        <Filename Value="main.pas"/>
-        <Caret Line="697" Column="6" TopLine="668"/>
-      </Position>
-      <Position>
-        <Filename Value="main.pas"/>
-        <Caret Line="699" Column="6" TopLine="670"/>
-      </Position>
-      <Position>
-        <Filename Value="main.pas"/>
-        <Caret Line="701" Column="17" TopLine="672"/>
-      </Position>
-      <Position>
-        <Filename Value="main.pas"/>
-        <Caret Line="711" Column="6" TopLine="681"/>
-      </Position>
-      <Position>
-        <Filename Value="main.pas"/>
-        <Caret Line="730" Column="10" TopLine="700"/>
-      </Position>
-      <Position>
-        <Filename Value="main.pas"/>
-        <Caret Line="732" Column="21" TopLine="702"/>
-      </Position>
-      <Position>
-        <Filename Value="main.pas"/>
-        <Caret Line="733" Column="22" TopLine="703"/>
-      </Position>
-      <Position>
-        <Filename Value="main.pas"/>
-        <Caret Line="734" Column="23" TopLine="704"/>
-      </Position>
-      <Position>
-        <Filename Value="main.pas"/>
-        <Caret Line="735" Column="24" TopLine="705"/>
-      </Position>
-      <Position>
-        <Filename Value="main.pas"/>
-        <Caret Line="738" Column="32" TopLine="708"/>
-      </Position>
-      <Position>
-        <Filename Value="main.pas"/>
-        <Caret Line="739" Column="32" TopLine="709"/>
-      </Position>
-      <Position>
-        <Filename Value="main.pas"/>
-        <Caret Line="747" Column="19" TopLine="717"/>
-      </Position>
-      <Position>
-        <Filename Value="main.pas"/>
-        <Caret Line="748" Column="20" TopLine="718"/>
-      </Position>
-      <Position>
-        <Filename Value="main.pas"/>
-        <Caret Line="749" Column="21" TopLine="719"/>
-      </Position>
-      <Position>
-        <Filename Value="main.pas"/>
-        <Caret Line="750" Column="22" TopLine="720"/>
-      </Position>
-      <Position>
-        <Filename Value="main.pas"/>
-        <Caret Line="789" Column="8" TopLine="759"/>
-      </Position>
       <Position>
         <Filename Value="main.pas"/>
         <Caret Line="838" Column="8" TopLine="808"/>
@@ -609,6 +504,118 @@
       <Position>
         <Filename Value="ifileop.pas"/>
         <Caret Line="87" Column="96" TopLine="73"/>
+      </Position>
+      <Position>
+        <Filename Value="main.pas"/>
+        <Caret Line="218" Column="22" TopLine="211"/>
+      </Position>
+      <Position>
+        <Filename Value="main.pas"/>
+        <Caret Line="606" Column="49" TopLine="594"/>
+      </Position>
+      <Position>
+        <Filename Value="main.pas"/>
+        <Caret Line="602" Column="24" TopLine="587"/>
+      </Position>
+      <Position>
+        <Filename Value="main.pas"/>
+        <Caret Line="862" Column="10" TopLine="845"/>
+      </Position>
+      <Position>
+        <Filename Value="main.pas"/>
+        <Caret Line="218" Column="15" TopLine="202"/>
+      </Position>
+      <Position>
+        <Filename Value="main.pas"/>
+        <Caret Line="614" Column="11" TopLine="202"/>
+      </Position>
+      <Position>
+        <Filename Value="main.pas"/>
+        <Caret Line="219" Column="59" TopLine="213"/>
+      </Position>
+      <Position>
+        <Filename Value="main.pas"/>
+        <Caret Line="676" Column="25" TopLine="655"/>
+      </Position>
+      <Position>
+        <Filename Value="main.pas"/>
+        <Caret Line="219" Column="78" TopLine="203"/>
+      </Position>
+      <Position>
+        <Filename Value="main.pas"/>
+        <Caret Line="673" Column="19" TopLine="668"/>
+      </Position>
+      <Position>
+        <Filename Value="..\..\Lazarus\Components\FListGrid\FileListGrid\filelistgrid.pas"/>
+        <Caret Line="23" Column="27" TopLine="4"/>
+      </Position>
+      <Position>
+        <Filename Value="..\..\Lazarus\Components\FListGrid\FileListGrid\filelistgrid.pas"/>
+        <Caret Line="358" Column="17" TopLine="328"/>
+      </Position>
+      <Position>
+        <Filename Value="main.pas"/>
+        <Caret Line="39" Column="35" TopLine="24"/>
+      </Position>
+      <Position>
+        <Filename Value="main.pas"/>
+        <Caret Line="37" Column="38" TopLine="11"/>
+      </Position>
+      <Position>
+        <Filename Value="main.pas"/>
+        <Caret Line="656" Column="54" TopLine="638"/>
+      </Position>
+      <Position>
+        <Filename Value="main.pas"/>
+        <Caret Line="662" Column="68" TopLine="645"/>
+      </Position>
+      <Position>
+        <Filename Value="main.pas"/>
+        <Caret Line="219" Column="33" TopLine="219"/>
+      </Position>
+      <Position>
+        <Filename Value="main.pas"/>
+        <Caret Line="656" Column="54" TopLine="639"/>
+      </Position>
+      <Position>
+        <Filename Value="main.pas"/>
+        <Caret Line="635" Column="3" TopLine="609"/>
+      </Position>
+      <Position>
+        <Filename Value="main.pas"/>
+        <Caret Line="218" Column="18" TopLine="201"/>
+      </Position>
+      <Position>
+        <Filename Value="main.pas"/>
+        <Caret Line="656" Column="62" TopLine="639"/>
+      </Position>
+      <Position>
+        <Filename Value="main.pas"/>
+        <Caret Line="218" Column="18" TopLine="201"/>
+      </Position>
+      <Position>
+        <Filename Value="main.pas"/>
+        <Caret Line="612" Column="5" TopLine="597"/>
+      </Position>
+      <Position>
+        <Filename Value="main.pas"/>
+        <Caret Line="665" Column="52" TopLine="632"/>
+      </Position>
+      <Position>
+        <Filename Value="main.pas"/>
+        <Caret Line="222" Column="19" TopLine="194"/>
+      </Position>
+      <Position>
+        <Filename Value="main.pas"/>
+        <Caret Line="612" TopLine="591"/>
+      </Position>
+      <Position>
+        <Filename Value="main.pas"/>
+        <Caret Line="218" Column="19" TopLine="218"/>
+      </Position>
+      <Position>
+        <Filename Value="..\..\Lazarus\Components\FListGrid\FileListGrid\filelistgrid.pas"/>
+        <Caret Line="141" Column="24" TopLine="125"/>
       </Position>
     </JumpHistory>
     <RunParams>
