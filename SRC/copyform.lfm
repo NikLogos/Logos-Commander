@@ -66,7 +66,7 @@ object copyF: TcopyF
   end
   object CpyTimer: TTimer
     Enabled = False
-    Interval = 100
+    Interval = 500
     OnTimer = CpyTimerTimer
     Left = 32
     Top = 96

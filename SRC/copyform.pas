@@ -114,6 +114,7 @@ begin
      No:=false;
      Yes:=false;
      copyf.Caption:=LngFormCaption;
+     close;
    end else begin
      while srcList.Count<>0 do begin
 

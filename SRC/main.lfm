@@ -118,7 +118,7 @@ object mForm: TmForm
             ImageIndexSortAsc = 12
             ImageIndexSortDesc = 13
             MouseWheelOption = mwGrid
-            Options = [goFixedVertLine, goFixedHorzLine, goVertLine, goHorzLine, goRangeSelect, goColSizing, goRowSelect, goSmoothScroll, goCellEllipsis]
+            Options = [goFixedVertLine, goFixedHorzLine, goVertLine, goHorzLine, goRangeSelect, goColSizing, goRowSelect, goSmoothScroll, goHeaderHotTracking, goCellEllipsis]
             ParentDoubleBuffered = False
             ParentFont = False
             RowCount = 12
@@ -439,7 +439,7 @@ object mForm: TmForm
             ImageIndexSortAsc = 12
             ImageIndexSortDesc = 13
             MouseWheelOption = mwGrid
-            Options = [goFixedVertLine, goFixedHorzLine, goVertLine, goHorzLine, goRangeSelect, goColSizing, goRowSelect, goSmoothScroll, goCellEllipsis]
+            Options = [goFixedVertLine, goFixedHorzLine, goVertLine, goHorzLine, goRangeSelect, goColSizing, goRowSelect, goSmoothScroll, goHeaderHotTracking, goCellEllipsis]
             ParentDoubleBuffered = False
             ParentFont = False
             RowCount = 30
