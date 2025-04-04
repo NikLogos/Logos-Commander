@@ -683,6 +683,7 @@ begin
     ActionDel.Caption:=LngBtnDel;
    //************************ LANG
    inifile:=tinifile.Create(GetAppConfigDir(false)+'lc.ini');
+
    lflist.Directory:=inifile.ReadString('main','lfdir','c:');
    rflist.Directory:=inifile.ReadString('main','rfdir','c:');
 
@@ -719,6 +720,9 @@ begin
    //*********************************** load file colors
    DiskMon:=TDeviceMonitor.Create(self);
    DiskMon.OnChange:=@diskChanged;
+
+   lflist.SortMode:=lflist.StrToSortMode(inifile.ReadString('main','lfsortmode','smNone'));
+   rflist.SortMode:=rflist.StrToSortMode(inifile.ReadString('main','rfsortmode','smNone'));
 end;
 
 procedure TmForm.fin;
@@ -765,6 +769,9 @@ begin
   inifile.WriteString('main','rfscap',rightFreeSpaceLabel.Caption);
 
   inifile.WriteInteger('main','lpwidth',leftPanel.Width);
+
+  inifile.WriteString('main','lfsortmode',lflist.SortModeToStr(lflist.SortMode));
+  inifile.WriteString('main','rfsortmode',rflist.SortModeToStr(rflist.SortMode));
 
   freeandnil(inifile);
 end;
