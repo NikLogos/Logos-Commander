@@ -72,6 +72,8 @@ const
    lngBtnNo = 'Отмена';
    lngRenameItem  = 'Переименовать';
    lngRenameItemPrompt = 'Введите новое имя:';
+   lngCopyFile  = 'Копировать';
+   lngCopyFilePrompt = 'Имя файла:';
 
 type
 
@@ -536,31 +538,52 @@ end;
 procedure TmForm.doCopy;
 var
   tmpList:tstringlist;
+  nName:string;
+  lSrc,lDest:TFileListGrid;
 begin
+
   tmpList:=tstringlist.Create;
   tmplist.Clear;
 
-  if copyf.getNowCopy then begin
+  if lflist.Focused then begin
+    lSrc:=lfList;
+    lDest:=rfList;
+  end else begin
+    lSrc:=rfList;
+    lDest:=lfList;
+  end;
+
+  if copyf.getNowCopy then begin  //if being copied
      if QuestionDlg(LngCopyProgressCaption,LngCopyProgressQ, mtCustom, [mrYes,LngCopyProgressYes,'IsDefault',mrNo,LngCopyProgressNo], 0) = mrYes
      then begin
-        if leftPanelFocused
-        then begin
-          if lflist.getSelectedItems(tmpList,false)
-          then copyf.addToCopyQueue(lflist.Directory,rflist.Directory,tmplist);
-        end else begin
-          if rflist.getSelectedItems(tmpList,false)
-          then copyf.addToCopyQueue(rflist.Directory,lflist.Directory,tmplist);
-        end;
+        if lSrc.getSelectedItems(tmpList,false)
+        then
+          if tmpList.Count<>1 then copyf.addToCopyQueue(lSrc.Directory,lDest.Directory,tmplist)
+          else begin
+            //если файл только один и это файл
+            if (
+                (fileexists(itbs(lSrc.Directory)+tmpList.Strings[0]))
+                 and
+                (dlgform.getDlg(lngCopyFile,lngCopyFilePrompt,tmpList.Strings[0],lngBtnYes,lngBtnNo, nName))
+                )
+            then copyf.addToCopyQueue(lSrc.Directory,lDest.Directory,tmplist,nName)
+            else copyf.addToCopyQueue(lSrc.Directory,lDest.Directory,tmplist);
+          end;
      end;
   end else begin
-    if leftPanelFocused
-    then begin
-      if lflist.getSelectedItems(tmpList,false)
-      then copyf.addToCopyQueue(lflist.Directory,rflist.Directory,tmplist);
-    end else begin
-      if rflist.getSelectedItems(tmpList,false)
-      then copyf.addToCopyQueue(rflist.Directory,lflist.Directory,tmplist);
-    end;
+    if lSrc.getSelectedItems(tmpList,false)
+    then
+      if tmpList.Count<>1 then copyf.addToCopyQueue(lSrc.Directory,lDest.Directory,tmplist)
+      else begin
+        //если файл только один и это файл
+        if (
+            (fileexists(itbs(lSrc.Directory)+tmpList.Strings[0]))
+             and
+            (dlgform.getDlg(lngCopyFile,lngCopyFilePrompt,tmpList.Strings[0],lngBtnYes,lngBtnNo, nName))
+            )
+        then copyf.addToCopyQueue(lSrc.Directory,lDest.Directory,tmplist,nName)
+        else copyf.addToCopyQueue(lSrc.Directory,lDest.Directory,tmplist);
+      end;
   end;
 
   tmpList.Free;

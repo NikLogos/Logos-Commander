@@ -57,7 +57,8 @@ type
     procedure FormDestroy(Sender: TObject);
     procedure CpyTimerTimer(Sender: TObject);
   private
-     srclist,destlist, qsrc:tstringlist;
+     srclist,destlist:tstringlist;
+     qsrc:tstringlist; //for scan subdirs
      nowCopy, YesToAll, NoToAll, No, Yes:boolean;
      copyThread:TFileCopyThread;
 
@@ -66,6 +67,7 @@ type
 
   public
      procedure addToCopyQueue(srcPath,destPath:string; addList:TstringList);
+     procedure addToCopyQueue(srcPath,destPath:string; addList:TstringList; DestFile:string);
      procedure startCopy;
      function getNowCopy:boolean;
   end;
@@ -249,6 +251,15 @@ begin
    end;
 
    tmpList.Free;
+end;
+
+procedure TcopyF.addToCopyQueue(srcPath, destPath: string;
+  addList: TstringList; DestFile: string);
+begin
+  if ((logList.Count<>0) and (loglist.Items.Strings[0]=LngCopyFin)) then LogList.Clear;
+  srcList.Add(IncludeTrailingPathDelimiter(srcPath)+addList.Strings[0]);
+  destList.Add(IncludeTrailingPathDelimiter(destPath)+destFile);
+  logList.Items.Add(IncludeTrailingPathDelimiter(srcPath)+addList.Strings[0]);
 end;
 
 procedure TcopyF.startCopy;
