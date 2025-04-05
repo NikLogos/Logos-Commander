@@ -18,10 +18,11 @@
       <UseVersionInfo Value="True"/>
       <AutoIncrementBuild Value="True"/>
       <MinorVersionNr Value="9"/>
-      <RevisionNr Value="15"/>
+      <RevisionNr Value="16"/>
       <BuildNr Value="3"/>
       <Language Value="0419"/>
       <Attributes pvaPreRelease="True" pvaPrivateBuild="True"/>
+      <StringTable LegalCopyright="(C), 2025, Nik Ksenofontov"/>
     </VersionInfo>
     <BuildModes>
       <Item Name="Default" Default="True"/>
@@ -87,6 +88,7 @@
         <Filename Value="setup.pas"/>
         <IsPartOfProject Value="True"/>
         <ComponentName Value="SetupForm"/>
+        <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
       </Unit>
     </Units>

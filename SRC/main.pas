@@ -204,7 +204,7 @@ type
     procedure ToolButton19Click(Sender: TObject);
   private
 
-    inifile:tinifile;
+
     //*********************** для файловых операций
     LeftPanelFocused:boolean;
 
@@ -230,7 +230,9 @@ type
 
 
   public
-     procedure SetColors;
+    inifile:tinifile;
+
+    procedure SetColors;
 
 
   end;
@@ -698,6 +700,7 @@ end;
 procedure TmForm.init;
 var
   counter:integer;
+  tmp:tstringlist;
 begin
 
    //************************ LANG
@@ -713,8 +716,8 @@ begin
    //************************ LANG
    inifile:=tinifile.Create(GetAppConfigDir(false)+'lc.ini');
 
-   lflist.Directory:=inifile.ReadString('main','lfdir','c:');
-   rflist.Directory:=inifile.ReadString('main','rfdir','c:');
+   //lflist.Directory:=inifile.ReadString('main','lfdir','c:');
+   //rflist.Directory:=inifile.ReadString('main','rfdir','c:');
 
    setdrives;
 
@@ -755,12 +758,43 @@ begin
 
    setColors;
 
-   //*********************************** load file colors
-   {
-   for counter:=1 to lflist.FilesColor.GetItemsCount do begin
-     inifile.WriteInteger('extcolor',lflist.FilesColor.Items[counter-1].Key,lflist.FilesColor.Items[counter-1].Value);
-   end;
-   }
+   lflist.FilesShowHidden:=inifile.ReadBool('main','showhidden',false);
+   lflist.FilesShowSys:=inifile.ReadBool('main','showsys',false);
+   lflist.FilesColorUse:=inifile.ReadBool('main','usecolors',false);
+
+   rflist.FilesShowHidden:=inifile.ReadBool('main','showhidden',false);
+   rflist.FilesShowSys:=inifile.ReadBool('main','showsys',false);
+   lflist.FilesColorUse:=inifile.ReadBool('main','usecolors',false);
+
+   if not inifile.ValueExists('extcolor','bgcolor')
+   then inifile.WriteString('extcolor','bgcolor','$00E6EEF0');
+   if not inifile.ValueExists('extcolor','system')
+   then mform.inifile.WriteString('extcolor','system','4734874');
+   if not inifile.ValueExists('extcolor','hidden')
+   then mform.inifile.WriteString('extcolor','hidden','10725807');
+
+
+   tmp:=tstringlist.Create;
+   inifile.ReadSection('extcolor',tmp);
+
+   lflist.FilesColor.clear;
+   for counter:=0 to tmp.Count-1 do
+     with lflist.FilesColor.Add do begin
+       key:=tmp.Strings[counter];
+       value:=inifile.ReadString('extcolor',key,'0');
+     end;
+
+   rflist.FilesColor.clear;
+   for counter:=0 to tmp.Count-1 do
+     with rflist.FilesColor.Add do begin
+       key:=tmp.Strings[counter];
+       value:=inifile.ReadString('extcolor',key,'0');
+     end;
+
+   tmp.Free;
+
+   lflist.Directory:=inifile.ReadString('main','lfdir','c:');
+   rflist.Directory:=inifile.ReadString('main','rfdir','c:');
 end;
 
 procedure TmForm.fin;
@@ -811,10 +845,6 @@ begin
   inifile.WriteString('main','lfsortmode',lflist.SortModeToStr(lflist.SortMode));
   inifile.WriteString('main','rfsortmode',rflist.SortModeToStr(rflist.SortMode));
 
-  for counter:=1 to lflist.FilesColor.GetItemsCount do begin
-     inifile.WriteString('extcolor',lflist.FilesColor.Items[counter-1].Key,lflist.FilesColor.Items[counter-1].Value);
-  end;
-
   //inifile.WriteString('extcolor','bgcolor',inttostr(lflist.Color));
 
   freeandnil(inifile);
@@ -827,9 +857,6 @@ end;
 
 procedure TmForm.SetColors;
 begin
-   inifile.Free;
-   inifile:=tinifile.Create(GetAppConfigDir(false)+'lc.ini');
-   //lflist.FilesColor.Items[lflist.FilesColor.GetItemIndexByKey('bgcolor')].Value:=inifile.Readstring('extcolor','bgcolor','clWhite');
    lflist.Color:=strtoint(inifile.Readstring('extcolor','bgcolor','clWhite'));
    rflist.Color:=strtoint(inifile.Readstring('extcolor','bgcolor','clWhite'));
 end;
