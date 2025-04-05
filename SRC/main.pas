@@ -764,7 +764,7 @@ begin
 
    rflist.FilesShowHidden:=inifile.ReadBool('main','showhidden',false);
    rflist.FilesShowSys:=inifile.ReadBool('main','showsys',false);
-   lflist.FilesColorUse:=inifile.ReadBool('main','usecolors',false);
+   rflist.FilesColorUse:=inifile.ReadBool('main','usecolors',false);
 
    if not inifile.ValueExists('extcolor','bgcolor')
    then inifile.WriteString('extcolor','bgcolor','$00E6EEF0');
