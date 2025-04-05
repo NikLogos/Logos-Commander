@@ -457,7 +457,11 @@ object mForm: TmForm
             DoubleBuffered = True
             FixedCols = 0
             Flat = True
+            Font.CharSet = ANSI_CHARSET
             Font.Height = -13
+            Font.Name = 'Segoe UI'
+            Font.Pitch = fpVariable
+            Font.Quality = fqDraft
             GridLineStyle = psClear
             ImageIndexSortAsc = 12
             ImageIndexSortDesc = 13
@@ -945,6 +949,12 @@ object mForm: TmForm
         Action = ActionExit
       end
     end
+    object MenuItem5: TMenuItem
+      Caption = 'Настройки'
+      object MenuItem6: TMenuItem
+        Action = ActionShowSetup
+      end
+    end
   end
   object splitterMenu: TPopupMenu
     Left = 496
@@ -1012,6 +1022,10 @@ object mForm: TmForm
       ImageIndex = 6
       OnExecute = ActionDel2Execute
       ShortCut = 46
+    end
+    object ActionShowSetup: TAction
+      Caption = 'Параметры'
+      OnExecute = ActionShowSetupExecute
     end
   end
   object ImageList1: TImageList

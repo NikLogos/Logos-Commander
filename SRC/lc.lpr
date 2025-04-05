@@ -31,7 +31,7 @@ uses
   athreads,
   {$ENDIF}
   Interfaces, // this includes the LCL widgetset
-  Forms, main, copyThread, copyForm, IFileOp, DiskMonitor, dialogform;
+  Forms, main, copyThread, copyForm, IFileOp, DiskMonitor, dialogform, setup;
 
 {$R *.res}
 
@@ -45,6 +45,7 @@ begin
   Application.CreateForm(TmForm, mForm);
   Application.CreateForm(TcopyF, copyF);
   Application.CreateForm(TdlgForm, dlgForm);
+  Application.CreateForm(TSetupForm, SetupForm);
   Application.Run;
 end.
 
