@@ -8,9 +8,9 @@
       <Unit>
         <Filename Value="lc.lpr"/>
         <IsPartOfProject Value="True"/>
-        <EditorIndex Value="8"/>
-        <TopLine Value="14"/>
-        <CursorPos Y="49"/>
+        <EditorIndex Value="14"/>
+        <TopLine Value="15"/>
+        <CursorPos Y="50"/>
         <UsageCount Value="200"/>
         <Loaded Value="True"/>
       </Unit>
@@ -20,9 +20,8 @@
         <ComponentName Value="mForm"/>
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
-        <IsVisibleTab Value="True"/>
-        <TopLine Value="580"/>
-        <CursorPos X="3" Y="588"/>
+        <TopLine Value="760"/>
+        <CursorPos X="67" Y="774"/>
         <UsageCount Value="200"/>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
@@ -33,7 +32,7 @@
         <UnitName Value="copyThread"/>
         <EditorIndex Value="-1"/>
         <TopLine Value="82"/>
-        <UsageCount Value="173"/>
+        <UsageCount Value="197"/>
       </Unit>
       <Unit>
         <Filename Value="copyform.pas"/>
@@ -42,10 +41,10 @@
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
         <UnitName Value="copyForm"/>
-        <EditorIndex Value="5"/>
-        <TopLine Value="242"/>
-        <CursorPos X="77" Y="262"/>
-        <UsageCount Value="161"/>
+        <EditorIndex Value="13"/>
+        <TopLine Value="98"/>
+        <CursorPos X="34" Y="86"/>
+        <UsageCount Value="185"/>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
       </Unit>
@@ -53,20 +52,19 @@
         <Filename Value="ifileop.pas"/>
         <IsPartOfProject Value="True"/>
         <UnitName Value="IFileOp"/>
-        <EditorIndex Value="1"/>
+        <EditorIndex Value="-1"/>
         <TopLine Value="154"/>
         <CursorPos X="26" Y="157"/>
-        <UsageCount Value="128"/>
-        <Loaded Value="True"/>
+        <UsageCount Value="152"/>
       </Unit>
       <Unit>
         <Filename Value="diskmonitor.pas"/>
         <IsPartOfProject Value="True"/>
         <UnitName Value="DiskMonitor"/>
-        <EditorIndex Value="-1"/>
-        <TopLine Value="80"/>
+        <EditorIndex Value="4"/>
         <CursorPos Y="106"/>
-        <UsageCount Value="77"/>
+        <UsageCount Value="101"/>
+        <Loaded Value="True"/>
       </Unit>
       <Unit>
         <Filename Value="dialogform.pas"/>
@@ -74,8 +72,22 @@
         <ComponentName Value="dlgForm"/>
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
-        <EditorIndex Value="6"/>
-        <UsageCount Value="69"/>
+        <EditorIndex Value="9"/>
+        <CursorPos Y="19"/>
+        <UsageCount Value="93"/>
+        <Loaded Value="True"/>
+        <LoadedDesigner Value="True"/>
+      </Unit>
+      <Unit>
+        <Filename Value="setup.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="SetupForm"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="Form"/>
+        <EditorIndex Value="1"/>
+        <TopLine Value="91"/>
+        <CursorPos X="36" Y="122"/>
+        <UsageCount Value="39"/>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
       </Unit>
@@ -126,10 +138,10 @@
       <Unit>
         <Filename Value="C:\lazarus\lcl\grids.pas"/>
         <UnitName Value="Grids"/>
-        <EditorIndex Value="7"/>
-        <TopLine Value="1815"/>
-        <CursorPos X="3" Y="1833"/>
-        <UsageCount Value="34"/>
+        <EditorIndex Value="11"/>
+        <TopLine Value="10316"/>
+        <CursorPos Y="10334"/>
+        <UsageCount Value="39"/>
         <Loaded Value="True"/>
       </Unit>
       <Unit>
@@ -142,10 +154,11 @@
       <Unit>
         <Filename Value="C:\lazarus\fpc\3.2.2\source\packages\winunits-base\src\shellapi.pp"/>
         <UnitName Value="ShellApi"/>
-        <EditorIndex Value="-1"/>
-        <TopLine Value="1206"/>
-        <CursorPos X="8" Y="1223"/>
-        <UsageCount Value="3"/>
+        <EditorIndex Value="6"/>
+        <TopLine Value="1468"/>
+        <CursorPos X="10" Y="1486"/>
+        <UsageCount Value="10"/>
+        <Loaded Value="True"/>
       </Unit>
       <Unit>
         <Filename Value="ShellNotify.pas"/>
@@ -156,10 +169,11 @@
       </Unit>
       <Unit>
         <Filename Value="C:\lazarus\fpc\3.2.2\source\rtl\objpas\classes\classesh.inc"/>
-        <EditorIndex Value="-1"/>
-        <TopLine Value="1787"/>
-        <CursorPos X="39" Y="1805"/>
-        <UsageCount Value="1"/>
+        <EditorIndex Value="7"/>
+        <TopLine Value="533"/>
+        <CursorPos X="3" Y="522"/>
+        <UsageCount Value="11"/>
+        <Loaded Value="True"/>
       </Unit>
       <Unit>
         <Filename Value="..\LazFileList\watchthread.pas"/>
@@ -171,17 +185,20 @@
       </Unit>
       <Unit>
         <Filename Value="C:\lazarus\lcl\include\control.inc"/>
-        <EditorIndex Value="-1"/>
-        <TopLine Value="2951"/>
-        <CursorPos X="3" Y="2968"/>
-        <UsageCount Value="12"/>
+        <EditorIndex Value="8"/>
+        <TopLine Value="3991"/>
+        <CursorPos Y="4009"/>
+        <UsageCount Value="14"/>
+        <Loaded Value="True"/>
       </Unit>
       <Unit>
         <Filename Value="main.lfm"/>
         <HasResources Value="True"/>
-        <EditorIndex Value="-1"/>
-        <CursorPos X="6" Y="804"/>
-        <UsageCount Value="16"/>
+        <EditorIndex Value="10"/>
+        <TopLine Value="764"/>
+        <CursorPos X="6" Y="800"/>
+        <UsageCount Value="18"/>
+        <Loaded Value="True"/>
         <DefaultSyntaxHighlighter Value="LFM"/>
       </Unit>
       <Unit>
@@ -266,10 +283,10 @@
       </Unit>
       <Unit>
         <Filename Value="C:\lazarus\fpc\3.2.2\source\rtl\objpas\sysutils\filutilh.inc"/>
-        <EditorIndex Value="2"/>
-        <TopLine Value="196"/>
-        <CursorPos X="11" Y="212"/>
-        <UsageCount Value="29"/>
+        <EditorIndex Value="12"/>
+        <TopLine Value="119"/>
+        <CursorPos X="12" Y="135"/>
+        <UsageCount Value="34"/>
         <Loaded Value="True"/>
       </Unit>
       <Unit>
@@ -277,7 +294,7 @@
         <EditorIndex Value="-1"/>
         <TopLine Value="135"/>
         <CursorPos Y="153"/>
-        <UsageCount Value="0"/>
+        <UsageCount Value="11"/>
       </Unit>
       <Unit>
         <Filename Value="iconcache.pas"/>
@@ -402,11 +419,10 @@
       <Unit>
         <Filename Value="C:\lazarus\lcl\lresources.pp"/>
         <UnitName Value="LResources"/>
-        <EditorIndex Value="9"/>
+        <EditorIndex Value="-1"/>
         <TopLine Value="5314"/>
         <CursorPos Y="5335"/>
-        <UsageCount Value="14"/>
-        <Loaded Value="True"/>
+        <UsageCount Value="21"/>
       </Unit>
       <Unit>
         <Filename Value="C:\lazarus\lcl\include\winapi.inc"/>
@@ -463,20 +479,19 @@
       <Unit>
         <Filename Value="..\..\Lazarus\Components\FListGrid\FileListGrid\filelistgrid.pas"/>
         <UnitName Value="FileListGrid"/>
-        <EditorIndex Value="3"/>
-        <TopLine Value="1143"/>
-        <CursorPos Y="1272"/>
-        <UsageCount Value="31"/>
+        <EditorIndex Value="2"/>
+        <TopLine Value="100"/>
+        <CursorPos X="3" Y="449"/>
+        <UsageCount Value="40"/>
         <Loaded Value="True"/>
       </Unit>
       <Unit>
         <Filename Value="C:\lazarus\components\lazutils\lazfileutils.pas"/>
         <UnitName Value="LazFileUtils"/>
-        <EditorIndex Value="4"/>
+        <EditorIndex Value="-1"/>
         <TopLine Value="120"/>
         <CursorPos X="22" Y="58"/>
-        <UsageCount Value="29"/>
-        <Loaded Value="True"/>
+        <UsageCount Value="31"/>
       </Unit>
       <Unit>
         <Filename Value="C:\lazarus\fpc\3.2.2\source\packages\fcl-process\src\process.pp"/>
@@ -488,9 +503,9 @@
       <Unit>
         <Filename Value="C:\lazarus\fpc\3.2.2\source\rtl\objpas\sysutils\datih.inc"/>
         <EditorIndex Value="-1"/>
-        <TopLine Value="143"/>
-        <CursorPos X="28" Y="162"/>
-        <UsageCount Value="14"/>
+        <TopLine Value="140"/>
+        <CursorPos X="84" Y="158"/>
+        <UsageCount Value="15"/>
       </Unit>
       <Unit>
         <Filename Value="C:\lazarus\fpc\3.2.2\source\rtl\objpas\sysutils\sysstrh.inc"/>
@@ -502,131 +517,155 @@
       <Unit>
         <Filename Value="C:\lazarus\fpc\3.2.2\source\rtl\objpas\sysutils\sysinth.inc"/>
         <EditorIndex Value="-1"/>
-        <TopLine Value="18"/>
-        <CursorPos X="3" Y="33"/>
-        <UsageCount Value="12"/>
+        <TopLine Value="51"/>
+        <CursorPos X="3" Y="57"/>
+        <UsageCount Value="13"/>
+      </Unit>
+      <Unit>
+        <Filename Value="C:\lazarus\fpc\3.2.2\source\packages\fcl-base\src\inifiles.pp"/>
+        <UnitName Value="IniFiles"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="251"/>
+        <CursorPos X="7" Y="262"/>
+        <UsageCount Value="10"/>
+      </Unit>
+      <Unit>
+        <Filename Value="..\..\Lazarus\Components\FListGrid\FileListGrid\cmenu.pas"/>
+        <EditorIndex Value="5"/>
+        <TopLine Value="64"/>
+        <CursorPos X="18" Y="32"/>
+        <UsageCount Value="10"/>
+        <Loaded Value="True"/>
+      </Unit>
+      <Unit>
+        <Filename Value="..\..\Lazarus\Components\FListGrid\FileListGrid\dirmonw.pas"/>
+        <UnitName Value="dirMonW"/>
+        <IsVisibleTab Value="True"/>
+        <EditorIndex Value="3"/>
+        <TopLine Value="115"/>
+        <CursorPos X="5" Y="109"/>
+        <UsageCount Value="10"/>
+        <Loaded Value="True"/>
       </Unit>
     </Units>
     <JumpHistory HistoryIndex="29">
       <Position>
         <Filename Value="..\..\Lazarus\Components\FListGrid\FileListGrid\filelistgrid.pas"/>
-        <Caret Line="168" Column="21" TopLine="140"/>
+        <Caret Line="1102" Column="26" TopLine="1085"/>
       </Position>
       <Position>
         <Filename Value="..\..\Lazarus\Components\FListGrid\FileListGrid\filelistgrid.pas"/>
-        <Caret Line="939" TopLine="910"/>
+        <Caret Line="1108" Column="62" TopLine="1090"/>
       </Position>
       <Position>
-        <Filename Value="copyform.pas"/>
-        <Caret Line="68" Column="22" TopLine="54"/>
+        <Filename Value="..\..\Lazarus\Components\FListGrid\FileListGrid\filelistgrid.pas"/>
+        <Caret Line="1113" Column="40" TopLine="1090"/>
       </Position>
       <Position>
-        <Filename Value="copyform.pas"/>
-        <Caret Line="69" Column="79" TopLine="52"/>
-      </Position>
-      <Position>
-        <Filename Value="copyform.pas"/>
-        <Caret Line="51" Column="37" TopLine="24"/>
-      </Position>
-      <Position>
-        <Filename Value="copyform.pas"/>
-        <Caret Line="60" Column="28" TopLine="30"/>
-      </Position>
-      <Position>
-        <Filename Value="copyform.pas"/>
-        <Caret Line="88" Column="7" TopLine="58"/>
-      </Position>
-      <Position>
-        <Filename Value="copyform.pas"/>
-        <Caret Line="98" Column="7" TopLine="68"/>
-      </Position>
-      <Position>
-        <Filename Value="copyform.pas"/>
-        <Caret Line="228" Column="8" TopLine="198"/>
-      </Position>
-      <Position>
-        <Filename Value="copyform.pas"/>
-        <Caret Line="259" Column="88" TopLine="242"/>
-      </Position>
-      <Position>
-        <Filename Value="copyform.pas"/>
-        <Caret Line="61" Column="23" TopLine="43"/>
+        <Filename Value="..\..\Lazarus\Components\FListGrid\FileListGrid\filelistgrid.pas"/>
+        <Caret Line="130" Column="14" TopLine="113"/>
       </Position>
       <Position>
         <Filename Value="main.pas"/>
-        <Caret Line="774" Column="71" TopLine="756"/>
+        <Caret Line="173" Column="29" TopLine="170"/>
       </Position>
       <Position>
         <Filename Value="main.pas"/>
-        <Caret Line="955" Column="7" TopLine="951"/>
+        <Caret Line="226" Column="19" TopLine="197"/>
       </Position>
       <Position>
-        <Filename Value="main.pas"/>
-        <Caret Line="216" Column="15" TopLine="199"/>
+        <Filename Value="..\..\Lazarus\Components\FListGrid\FileListGrid\filelistgrid.pas"/>
+        <Caret Line="129" Column="19" TopLine="123"/>
       </Position>
       <Position>
-        <Filename Value="main.pas"/>
-        <Caret Line="545" Column="14" TopLine="526"/>
+        <Filename Value="..\..\Lazarus\Components\FListGrid\FileListGrid\filelistgrid.pas"/>
+        <Caret Line="961" Column="37" TopLine="952"/>
       </Position>
       <Position>
-        <Filename Value="copyform.pas"/>
-        <Caret Line="261" Column="15" TopLine="227"/>
+        <Filename Value="..\..\Lazarus\Components\FListGrid\FileListGrid\filelistgrid.pas"/>
+        <Caret Line="97" Column="49" TopLine="96"/>
       </Position>
       <Position>
-        <Filename Value="main.pas"/>
-        <Caret Line="557" Column="20" TopLine="536"/>
+        <Filename Value="..\..\Lazarus\Components\FListGrid\FileListGrid\filelistgrid.pas"/>
       </Position>
       <Position>
-        <Filename Value="main.pas"/>
-        <Caret Line="944" Column="77" TopLine="937"/>
+        <Filename Value="..\..\Lazarus\Components\FListGrid\FileListGrid\filelistgrid.pas"/>
+        <Caret Line="149" Column="20" TopLine="120"/>
       </Position>
       <Position>
-        <Filename Value="copyform.pas"/>
-        <Caret Line="260" Column="70" TopLine="242"/>
+        <Filename Value="..\..\Lazarus\Components\FListGrid\FileListGrid\filelistgrid.pas"/>
+        <Caret Line="152" Column="17" TopLine="127"/>
       </Position>
       <Position>
-        <Filename Value="copyform.pas"/>
-        <Caret Line="262" Column="77" TopLine="242"/>
+        <Filename Value="..\..\Lazarus\Components\FListGrid\FileListGrid\filelistgrid.pas"/>
+        <Caret Line="1257" Column="3" TopLine="1249"/>
       </Position>
       <Position>
-        <Filename Value="main.pas"/>
-        <Caret Line="557" Column="15" TopLine="540"/>
+        <Filename Value="..\..\Lazarus\Components\FListGrid\FileListGrid\cmenu.pas"/>
+        <Caret Line="160" TopLine="124"/>
       </Position>
       <Position>
-        <Filename Value="main.pas"/>
-        <Caret Line="944" Column="77" TopLine="936"/>
+        <Filename Value="..\..\Lazarus\Components\FListGrid\FileListGrid\cmenu.pas"/>
+        <Caret Line="165" Column="46" TopLine="133"/>
       </Position>
       <Position>
-        <Filename Value="main.pas"/>
-        <Caret Line="76" Column="42" TopLine="50"/>
+        <Filename Value="..\..\Lazarus\Components\FListGrid\FileListGrid\cmenu.pas"/>
+        <Caret Line="120" TopLine="84"/>
       </Position>
       <Position>
-        <Filename Value="main.pas"/>
-        <Caret Line="560" Column="94" TopLine="46"/>
+        <Filename Value="..\..\Lazarus\Components\FListGrid\FileListGrid\cmenu.pas"/>
+        <Caret Line="75" Column="84" TopLine="45"/>
       </Position>
       <Position>
-        <Filename Value="main.pas"/>
-        <Caret Line="563" Column="89" TopLine="543"/>
+        <Filename Value="..\..\Lazarus\Components\FListGrid\FileListGrid\cmenu.pas"/>
+        <Caret Line="59" Column="60" TopLine="28"/>
       </Position>
       <Position>
-        <Filename Value="main.pas"/>
-        <Caret Line="560" Column="29" TopLine="542"/>
+        <Filename Value="..\..\Lazarus\Components\FListGrid\FileListGrid\cmenu.pas"/>
+        <Caret Line="136" TopLine="100"/>
       </Position>
       <Position>
-        <Filename Value="main.pas"/>
-        <Caret Line="585" Column="17" TopLine="554"/>
+        <Filename Value="..\..\Lazarus\Components\FListGrid\FileListGrid\cmenu.pas"/>
+        <Caret Line="32" Column="3" TopLine="14"/>
       </Position>
       <Position>
-        <Filename Value="main.pas"/>
-        <Caret Line="602" Column="5" TopLine="572"/>
+        <Filename Value="..\..\Lazarus\Components\FListGrid\FileListGrid\cmenu.pas"/>
+        <Caret Line="47" Column="60" TopLine="14"/>
       </Position>
       <Position>
-        <Filename Value="main.pas"/>
-        <Caret Line="552" Column="22" TopLine="531"/>
+        <Filename Value="..\..\Lazarus\Components\FListGrid\FileListGrid\cmenu.pas"/>
+        <Caret Line="153" TopLine="117"/>
       </Position>
       <Position>
-        <Filename Value="main.pas"/>
-        <Caret Line="553" Column="18" TopLine="531"/>
+        <Filename Value="..\..\Lazarus\Components\FListGrid\FileListGrid\cmenu.pas"/>
+        <Caret Line="92" Column="49" TopLine="66"/>
+      </Position>
+      <Position>
+        <Filename Value="..\..\Lazarus\Components\FListGrid\FileListGrid\cmenu.pas"/>
+        <Caret Line="136" TopLine="100"/>
+      </Position>
+      <Position>
+        <Filename Value="..\..\Lazarus\Components\FListGrid\FileListGrid\cmenu.pas"/>
+        <Caret Line="32" Column="3"/>
+      </Position>
+      <Position>
+        <Filename Value="..\..\Lazarus\Components\FListGrid\FileListGrid\cmenu.pas"/>
+        <Caret Line="31" Column="32" TopLine="14"/>
+      </Position>
+      <Position>
+        <Filename Value="C:\lazarus\fpc\3.2.2\source\packages\winunits-base\src\shellapi.pp"/>
+        <Caret Line="1486" Column="10" TopLine="1468"/>
+      </Position>
+      <Position>
+        <Filename Value="..\..\Lazarus\Components\FListGrid\FileListGrid\filelistgrid.pas"/>
+        <Caret Line="266" Column="56" TopLine="253"/>
+      </Position>
+      <Position>
+        <Filename Value="..\..\Lazarus\Components\FListGrid\FileListGrid\filelistgrid.pas"/>
+      </Position>
+      <Position>
+        <Filename Value="..\..\Lazarus\Components\FListGrid\FileListGrid\filelistgrid.pas"/>
+        <Caret Line="449" Column="3" TopLine="100"/>
       </Position>
     </JumpHistory>
     <RunParams>

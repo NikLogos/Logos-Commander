@@ -120,16 +120,16 @@ object mForm: TmForm
             Options = [goFixedVertLine, goFixedHorzLine, goVertLine, goHorzLine, goRangeSelect, goColSizing, goRowSelect, goSmoothScroll, goHeaderHotTracking, goCellEllipsis]
             ParentDoubleBuffered = False
             ParentFont = False
-            RowCount = 12
+            RowCount = 2
             TabOrder = 0
             TitleImageList = ImageList1
             OnColRowInserted = rFListColRowInserted
             OnEnter = rFListEnter
             OnHeaderSized = rFListHeaderSized
-            Directory = 'd:'
+            Directory = 'c:\tmp'
             OnFileSelect = rFListFileSelect
             OnDirChange = rFListDirChange
-            SelectedItem = '$Recycle.Bin'
+            SelectedItem = '..'
             FilesColorUse = True
             FilesColor = <            
               item
@@ -145,121 +145,33 @@ object mForm: TmForm
                 Value = '$003DBE71'
               end>
             SortMode = smNameAsc
+            FilesShowHidden = False
+            FilesShowSys = False
             ColWidths = (
               200
               64
               64
             )
             Cells = (
-              36
+              6
               0
               0
               'Имя'
               0
               1
-              '$RECYCLE.BIN'
-              0
-              2
-              'Boot'
-              0
-              3
-              'Code'
-              0
-              4
-              'Games'
-              0
-              5
-              'gitReps'
-              0
-              6
-              'Software'
-              0
-              7
-              'System Volume Information'
-              0
-              8
-              'temp'
-              0
-              9
-              'bootmgr'
-              0
-              10
-              'BOOTNXT'
-              0
-              11
-              'BOOTSECT.BAK'
+              '..'
               1
               0
               'Размер'
               1
               1
               '<папка>'
-              1
-              2
-              '<папка>'
-              1
-              3
-              '<папка>'
-              1
-              4
-              '<папка>'
-              1
-              5
-              '<папка>'
-              1
-              6
-              '<папка>'
-              1
-              7
-              '<папка>'
-              1
-              8
-              '<папка>'
-              1
-              9
-              '434,55 кб'
-              1
-              10
-              '1 б'
-              1
-              11
-              '8,00 кб'
               2
               0
               'Дата'
               2
               1
-              '13:07:24 10:07:48'
-              2
-              2
-              '12:03:25 09:46:10'
-              2
-              3
-              '03:04:25 18:52:10'
-              2
-              4
-              '21:03:25 19:37:58'
-              2
-              5
-              '27:01:25 21:13:14'
-              2
-              6
-              '03:04:25 10:18:42'
-              2
-              7
-              '04:04:25 04:34:58'
-              2
-              8
-              '01:04:25 21:15:44'
-              2
-              9
-              '11:03:25 22:51:30'
-              2
-              10
-              '07:05:22 08:19:40'
-              2
-              11
-              '13:07:24 09:45:12'
+              '02 апр 2025 22:58'
             )
           end
           object EditRightPath: TEdit
@@ -457,7 +369,11 @@ object mForm: TmForm
             DoubleBuffered = True
             FixedCols = 0
             Flat = True
+            Font.CharSet = ANSI_CHARSET
             Font.Height = -13
+            Font.Name = 'Segoe UI'
+            Font.Pitch = fpVariable
+            Font.Quality = fqDraft
             GridLineStyle = psClear
             ImageIndexSortAsc = 12
             ImageIndexSortDesc = 13
@@ -465,16 +381,16 @@ object mForm: TmForm
             Options = [goFixedVertLine, goFixedHorzLine, goVertLine, goHorzLine, goRangeSelect, goColSizing, goRowSelect, goSmoothScroll, goHeaderHotTracking, goCellEllipsis]
             ParentDoubleBuffered = False
             ParentFont = False
-            RowCount = 30
+            RowCount = 2
             TabOrder = 0
             TitleImageList = ImageList1
             OnEnter = lFListEnter
             OnHeaderSized = lFListHeaderSized
             OnSelectCell = lFListSelectCell
-            Directory = 'c:'
+            Directory = 'c:\tmp'
             OnFileSelect = lFListFileSelect
             OnDirChange = lFListDirChange
-            SelectedItem = '$Recycle.Bin'
+            SelectedItem = '..'
             FilesColorUse = True
             FilesColor = <            
               item
@@ -490,283 +406,33 @@ object mForm: TmForm
                 Value = '$003DBE71'
               end>
             SortMode = smNameAsc
+            FilesShowHidden = False
+            FilesShowSys = False
             ColWidths = (
               167
               166
               166
             )
             Cells = (
-              90
+              6
               0
               0
               'Имя'
               0
               1
-              '$Recycle.Bin'
-              0
-              2
-              'Boot'
-              0
-              3
-              'Documents and Settings'
-              0
-              4
-              'found.000'
-              0
-              5
-              'Games'
-              0
-              6
-              'Intel'
-              0
-              7
-              'lazarus'
-              0
-              8
-              'PerfLogs'
-              0
-              9
-              'Program Files'
-              0
-              10
-              'Program Files (x86)'
-              0
-              11
-              'ProgramData'
-              0
-              12
-              'Recovery'
-              0
-              13
-              'Soft'
-              0
-              14
-              'System Volume Information'
-              0
-              15
-              'temp'
-              0
-              16
-              'tmp'
-              0
-              17
-              'Users'
-              0
-              18
-              'Windows'
-              0
-              19
-              '$WINRE_BACKUP_PARTITION.MARKER'
-              0
-              20
-              'bootmgr'
-              0
-              21
-              'BOOTNXT'
-              0
-              22
-              'bootTel.dat'
-              0
-              23
-              'csb.log'
-              0
-              24
-              'demux.log'
-              0
-              25
-              'DumpStack.log'
-              0
-              26
-              'DumpStack.log.tmp'
-              0
-              27
-              'hiberfil.sys'
-              0
-              28
-              'pagefile.sys'
-              0
-              29
-              'swapfile.sys'
+              '..'
               1
               0
               'Размер'
               1
               1
               '<папка>'
-              1
-              2
-              '<папка>'
-              1
-              3
-              '<папка>'
-              1
-              4
-              '<папка>'
-              1
-              5
-              '<папка>'
-              1
-              6
-              '<папка>'
-              1
-              7
-              '<папка>'
-              1
-              8
-              '<папка>'
-              1
-              9
-              '<папка>'
-              1
-              10
-              '<папка>'
-              1
-              11
-              '<папка>'
-              1
-              12
-              '<папка>'
-              1
-              13
-              '<папка>'
-              1
-              14
-              '<папка>'
-              1
-              15
-              '<папка>'
-              1
-              16
-              '<папка>'
-              1
-              17
-              '<папка>'
-              1
-              18
-              '<папка>'
-              1
-              19
-              '0 б'
-              1
-              20
-              '434,55 кб'
-              1
-              21
-              '1 б'
-              1
-              22
-              '112 б'
-              1
-              23
-              '10 б'
-              1
-              24
-              '986 б'
-              1
-              25
-              '12,00 кб'
-              1
-              26
-              '12,00 кб'
-              1
-              27
-              '9,58 гб'
-              1
-              28
-              '1,50 гб'
-              1
-              29
-              '16,00 мб'
               2
               0
               'Дата'
               2
               1
-              '13:07:24 10:16:22'
-              2
-              2
-              '16:03:25 00:06:24'
-              2
-              3
-              '13:07:24 09:48:30'
-              2
-              4
-              '16:03:25 01:25:20'
-              2
-              5
-              '25:10:24 13:30:46'
-              2
-              6
-              '14:07:24 21:39:46'
-              2
-              7
-              '04:04:25 11:41:42'
-              2
-              8
-              '07:05:22 08:24:52'
-              2
-              9
-              '03:04:25 10:22:22'
-              2
-              10
-              '02:04:25 21:07:30'
-              2
-              11
-              '28:03:25 23:59:08'
-              2
-              12
-              '13:07:24 10:13:16'
-              2
-              13
-              '02:04:25 22:58:44'
-              2
-              14
-              '04:04:25 04:34:58'
-              2
-              15
-              '20:03:25 10:41:18'
-              2
-              16
-              '01:04:25 17:10:28'
-              2
-              17
-              '13:07:24 10:15:14'
-              2
-              18
-              '17:03:25 13:48:14'
-              2
-              19
-              '12:02:25 00:37:34'
-              2
-              20
-              '11:03:25 22:51:30'
-              2
-              21
-              '07:05:22 08:19:40'
-              2
-              22
-              '16:03:25 01:25:20'
-              2
-              23
-              '13:07:24 10:44:00'
-              2
-              24
-              '23:08:24 09:44:22'
-              2
-              25
-              '15:03:25 20:19:14'
-              2
-              26
-              '02:04:25 23:01:24'
-              2
-              27
-              '02:04:25 23:01:24'
-              2
-              28
-              '02:04:25 23:01:24'
-              2
-              29
-              '02:04:25 23:01:24'
+              '02 апр 2025 22:58'
             )
           end
           object Panel3: TPanel
@@ -945,6 +611,12 @@ object mForm: TmForm
         Action = ActionExit
       end
     end
+    object MenuItem5: TMenuItem
+      Caption = 'Настройки'
+      object MenuItem6: TMenuItem
+        Action = ActionShowSetup
+      end
+    end
   end
   object splitterMenu: TPopupMenu
     Left = 496
@@ -1012,6 +684,10 @@ object mForm: TmForm
       ImageIndex = 6
       OnExecute = ActionDel2Execute
       ShortCut = 46
+    end
+    object ActionShowSetup: TAction
+      Caption = 'Параметры'
+      OnExecute = ActionShowSetupExecute
     end
   end
   object ImageList1: TImageList

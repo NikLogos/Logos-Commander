@@ -36,7 +36,7 @@ uses
   Classes, SysUtils, Forms, Controls, Graphics, Dialogs, ComCtrls, ExtCtrls,
   Menus, ActnList, Buttons, StdCtrls,
   inifiles, windows, Grids, lazUTF8, shellapi, FileListGrid, copyform, IFileOp,
-  diskmonitor, dialogform;
+  diskmonitor, dialogform, setup;
 
 const
    LngMainMenuFile:string = 'Файл';
@@ -80,6 +80,7 @@ type
   { TmForm }
 
   TmForm = class(TForm)
+    ActionShowSetup: TAction;
     ActionDel2: TAction;
     ActionDel: TAction;
     ActionNewFold: TAction;
@@ -100,6 +101,8 @@ type
     leftPanel: TPanel;
     lFList: TFileListGrid;
     llimg: TImage;
+    MenuItem5: TMenuItem;
+    MenuItem6: TMenuItem;
     mPanel: TPanel;
     PageControl1: TPageControl;
     PageControl2: TPageControl;
@@ -160,6 +163,7 @@ type
     procedure ActionMovExecute(Sender: TObject);
     procedure ActionNewFoldExecute(Sender: TObject);
     procedure ActionRenameExecute(Sender: TObject);
+    procedure ActionShowSetupExecute(Sender: TObject);
     procedure ActionViewExecute(Sender: TObject);
     procedure CoolBar1Change(Sender: TObject);
     procedure EditLeftPathClick(Sender: TObject);
@@ -200,7 +204,7 @@ type
     procedure ToolButton19Click(Sender: TObject);
   private
 
-    inifile:tinifile;
+
     //*********************** для файловых операций
     LeftPanelFocused:boolean;
 
@@ -223,8 +227,12 @@ type
     procedure fin;
 
     function itbs(path:string):string;
-  public
 
+
+  public
+    inifile:tinifile;
+
+    procedure SetColors;
 
 
   end;
@@ -692,6 +700,7 @@ end;
 procedure TmForm.init;
 var
   counter:integer;
+  tmp:tstringlist;
 begin
 
    //************************ LANG
@@ -707,8 +716,8 @@ begin
    //************************ LANG
    inifile:=tinifile.Create(GetAppConfigDir(false)+'lc.ini');
 
-   lflist.Directory:=inifile.ReadString('main','lfdir','c:');
-   rflist.Directory:=inifile.ReadString('main','rfdir','c:');
+   //lflist.Directory:=inifile.ReadString('main','lfdir','c:');
+   //rflist.Directory:=inifile.ReadString('main','rfdir','c:');
 
    setdrives;
 
@@ -740,12 +749,52 @@ begin
 
    mform.Caption:= mform.Caption+getVersion;
 
-   //*********************************** load file colors
+
    DiskMon:=TDeviceMonitor.Create(self);
    DiskMon.OnChange:=@diskChanged;
 
    lflist.SortMode:=lflist.StrToSortMode(inifile.ReadString('main','lfsortmode','smNone'));
    rflist.SortMode:=rflist.StrToSortMode(inifile.ReadString('main','rfsortmode','smNone'));
+
+   setColors;
+
+   lflist.FilesShowHidden:=inifile.ReadBool('main','showhidden',false);
+   lflist.FilesShowSys:=inifile.ReadBool('main','showsys',false);
+   lflist.FilesColorUse:=inifile.ReadBool('main','usecolors',false);
+
+   rflist.FilesShowHidden:=inifile.ReadBool('main','showhidden',false);
+   rflist.FilesShowSys:=inifile.ReadBool('main','showsys',false);
+   rflist.FilesColorUse:=inifile.ReadBool('main','usecolors',false);
+
+   if not inifile.ValueExists('extcolor','bgcolor')
+   then inifile.WriteString('extcolor','bgcolor','$00E6EEF0');
+   if not inifile.ValueExists('extcolor','system')
+   then mform.inifile.WriteString('extcolor','system','4734874');
+   if not inifile.ValueExists('extcolor','hidden')
+   then mform.inifile.WriteString('extcolor','hidden','10725807');
+
+
+   tmp:=tstringlist.Create;
+   inifile.ReadSection('extcolor',tmp);
+
+   lflist.FilesColor.clear;
+   for counter:=0 to tmp.Count-1 do
+     with lflist.FilesColor.Add do begin
+       key:=tmp.Strings[counter];
+       value:=inifile.ReadString('extcolor',key,'0');
+     end;
+
+   rflist.FilesColor.clear;
+   for counter:=0 to tmp.Count-1 do
+     with rflist.FilesColor.Add do begin
+       key:=tmp.Strings[counter];
+       value:=inifile.ReadString('extcolor',key,'0');
+     end;
+
+   tmp.Free;
+
+   lflist.Directory:=inifile.ReadString('main','lfdir','c:');
+   rflist.Directory:=inifile.ReadString('main','rfdir','c:');
 end;
 
 procedure TmForm.fin;
@@ -796,12 +845,20 @@ begin
   inifile.WriteString('main','lfsortmode',lflist.SortModeToStr(lflist.SortMode));
   inifile.WriteString('main','rfsortmode',rflist.SortModeToStr(rflist.SortMode));
 
+  //inifile.WriteString('extcolor','bgcolor',inttostr(lflist.Color));
+
   freeandnil(inifile);
 end;
 
 function TmForm.itbs(path: string): string;
 begin
   result:=includetrailingbackslash(path);
+end;
+
+procedure TmForm.SetColors;
+begin
+   lflist.Color:=strtoint(inifile.Readstring('extcolor','bgcolor','clWhite'));
+   rflist.Color:=strtoint(inifile.Readstring('extcolor','bgcolor','clWhite'));
 end;
 
 procedure TmForm.FormCreate(Sender: TObject);
@@ -1009,6 +1066,11 @@ begin
       except
         on E: Exception do ShowMessage('Error: '+ E.Message );
       end;
+end;
+
+procedure TmForm.ActionShowSetupExecute(Sender: TObject);
+begin
+  setupform.Show;
 end;
 
 procedure TmForm.ActionViewExecute(Sender: TObject);

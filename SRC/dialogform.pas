@@ -41,6 +41,7 @@ begin
   end;
 end;
 
+
 procedure TdlgForm.FormKeyPress(Sender: TObject; var Key: char);
 begin
 

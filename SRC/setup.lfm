@@ -1,0 +1,171 @@
+object SetupForm: TSetupForm
+  Left = 495
+  Height = 480
+  Top = 212
+  Width = 640
+  Caption = 'Настройки'
+  ClientHeight = 480
+  ClientWidth = 640
+  OnClose = FormClose
+  OnCreate = FormCreate
+  OnDestroy = FormDestroy
+  OnShow = FormShow
+  Position = poMainFormCenter
+  LCLVersion = '3.8.0.0'
+  object PageControl1: TPageControl
+    Left = 0
+    Height = 480
+    Top = 0
+    Width = 640
+    ActivePage = TabSheet1
+    Align = alClient
+    TabIndex = 0
+    TabOrder = 0
+    object TabSheet1: TTabSheet
+      Caption = 'TabSheet1'
+      ClientHeight = 452
+      ClientWidth = 632
+      object cListBox: TListBox
+        Left = 8
+        Height = 80
+        Top = 8
+        Width = 240
+        ItemHeight = 0
+        TabOrder = 0
+        OnClick = cListBoxClick
+      end
+      object SampleGrid: TStringGrid
+        Left = 8
+        Height = 50
+        Top = 120
+        Width = 240
+        AutoFillColumns = True
+        ColCount = 1
+        FixedCols = 0
+        FixedRows = 0
+        Flat = True
+        RowCount = 1
+        TabOrder = 4
+        TabStop = False
+        ColWidths = (
+          239
+        )
+      end
+      object BtAdd: TBitBtn
+        Left = 8
+        Height = 30
+        Top = 88
+        Width = 30
+        Images = ImageList1
+        ImageIndex = 2
+        OnClick = BtAddClick
+        Spacing = 0
+        TabOrder = 1
+      end
+      object BtDel: TBitBtn
+        Left = 40
+        Height = 30
+        Top = 88
+        Width = 30
+        Images = ImageList1
+        ImageIndex = 1
+        OnClick = BtDelClick
+        Spacing = 0
+        TabOrder = 2
+      end
+      object btnChg: TBitBtn
+        Left = 72
+        Height = 30
+        Top = 88
+        Width = 30
+        Images = ImageList1
+        ImageIndex = 0
+        OnClick = btnChgClick
+        Spacing = 0
+        TabOrder = 3
+      end
+      object cbColor: TCheckBox
+        Left = 8
+        Height = 19
+        Top = 190
+        Width = 60
+        Caption = 'cbColor'
+        TabOrder = 5
+        OnChange = cbColorChange
+      end
+      object cbSys: TCheckBox
+        Left = 8
+        Height = 19
+        Top = 210
+        Width = 48
+        Caption = 'cbSys'
+        TabOrder = 6
+        OnChange = cbSysChange
+      end
+      object cbHidden: TCheckBox
+        Left = 8
+        Height = 19
+        Top = 230
+        Width = 70
+        Caption = 'cbHidden'
+        TabOrder = 7
+        OnChange = cbHiddenChange
+      end
+    end
+  end
+  object ImageList1: TImageList
+    Left = 319
+    Top = 96
+    Bitmap = {
+      4C7A030000001000000010000000890200000000000078DAED953D68136118C7
+      9FC15AB4B616EB6741903A38A88B6B7170305B062D2E87D72BC7B5F58C1F1922
+      52E870E0AAA3604007B154DD922543E64CF17011244B9058AEA1496B69CBC572
+      FD787CFE0FD6A1557BEDD421073FDEF7FFE4FF3B5E9223E7795ED2F3BCB17D90
+      64669A9C9C1CE77D5CBF3D9A989818DFDCDC64335761BB18281B1B1B6C9A92ED
+      4041CE492ECA1EA00F0F7E2693B9B7BEBECE56A1C66E3952D6D6D6D8B224BB91
+      825C905C963D401F1EFC743AED4651C446BECA4E2954565757D930243BA1829C
+      975C923D401F1EFC542AE5E2F3300C63833E3CF8A3A3A3F75BAD169B951CDB41
+      51595E5EE64AA5C24110289ACD1C077651411F1EFC919191D4CACA0A5BB502BB
+      5159595C5CE45AADA6E7049AAD02476E59411F1E7CC3301E2C2D2DB151CDB313
+      9694F9F979AE56AB7FCEABD9C873E89414ED8B077F6868E821EE3F3737171BF4
+      E1C14F26938F161616D8FC64B2FDD556666767B992333928DA8A6653B26D2BE8
+      C3839F48241E371A0DB6BE58EC365C656666866B058BA3B2AB68B624BBAE823E
+      3CF8838383699CC9F86CB013380ABEBB6ADEE0B0E4289A0DC98EA3A00F0FFEC0
+      C040A6D96C72BD5E8F0DFAF0E0777575DDEDEEEE7EBA57E0C197EBB07046E8DF
+      03E877C26F7370209A12A6B344EFFD9D603EB58B7F4978E50F0FFFE4ED608ECF
+      FFEFD37922FB1D91E7EFC4C6E12EECE21F174EFFE3993B2BF4B67FE736079913
+      6F884E7E203AF591B2828F1519F3B87EDF5BB9C714F94F7E388C1539B6FF9AB2
+      D2F5C158F30E6FED318FE3F7BE24FF76FD066F07F3387ECF0BCAF63C271F5CFF
+      7E85B7F698C7F13B13F262B94974EC19F997BFF53356E4431729E67F201D11AE
+      76DCA2E90E977CAC92AF097D31FD8EBFBC0FCF0947DBCFF74E7E01EE800B01
+    }
+  end
+  object chgColorDlg: TColorDialog
+    OnClose = chgColorDlgClose
+    Color = clBlack
+    CustomColors.Strings = (
+      'ColorA=000000'
+      'ColorB=000080'
+      'ColorC=008000'
+      'ColorD=008080'
+      'ColorE=800000'
+      'ColorF=800080'
+      'ColorG=808000'
+      'ColorH=808080'
+      'ColorI=C0C0C0'
+      'ColorJ=0000FF'
+      'ColorK=00FF00'
+      'ColorL=00FFFF'
+      'ColorM=FF0000'
+      'ColorN=FF00FF'
+      'ColorO=FFFF00'
+      'ColorP=FFFFFF'
+      'ColorQ=C0DCC0'
+      'ColorR=F0CAA6'
+      'ColorS=F0FBFF'
+      'ColorT=A4A0A0'
+    )
+    Left = 296
+    Top = 162
+  end
+end
