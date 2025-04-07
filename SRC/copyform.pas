@@ -27,10 +27,10 @@ interface
 
 uses
   Classes, SysUtils, Forms, Controls, Graphics, Dialogs, StdCtrls, ComCtrls,
-  ExtCtrls, copyThread;
+  ExtCtrls, copyThread, fileutil;
 
 const
-   LngCopyFin:string = 'Копирование завершено';
+   LngCopyFin:string = 'Выполнение задач завершено';
    LngErrorCreateDirCaption = 'Ошибка';
    LngErrorCreateDir = 'Не удалось создать папку';
    LngFileExistCaption = 'Файл уже существует';
@@ -40,7 +40,9 @@ const
    LngFileExistYALL = 'Да для всех';
    LngFileExistNALL = 'Нет для всех';
    LngFormCaption = 'Копирование >>';
+   LngFormCaptionMov = 'Перемещение >>';
    LngCopyLeftOf = 'В очереди файлов:';
+   LngCopyErrDelete = 'Ошибка удаления: ';
 
 type
 
@@ -57,16 +59,17 @@ type
     procedure FormDestroy(Sender: TObject);
     procedure CpyTimerTimer(Sender: TObject);
   private
-     srclist,destlist:tstringlist;
+     srclist,destlist, deletelist:tstringlist;
      qsrc:tstringlist; //for scan subdirs
      nowCopy, YesToAll, NoToAll, No, Yes:boolean;
+     doMove:boolean;
      copyThread:TFileCopyThread;
 
      procedure ScanDir(const Dir: string; FileList: TStringList);
      procedure copyDone(sender:tobject);
 
   public
-     procedure addToCopyQueue(srcPath,destPath:string; addList:TstringList);
+     procedure addToCopyQueue(srcPath,destPath:string; addList:TstringList; isMove:boolean);
      procedure addToCopyQueue(srcPath,destPath:string; addList:TstringList; DestFile:string);
      procedure startCopy;
      function getNowCopy:boolean;
@@ -86,16 +89,19 @@ begin
   Self.ShowInTaskBar := stAlways;
   srclist:=tstringlist.create;
   destlist:=tstringlist.create;
+  deletelist:=tstringlist.create;
   qsrc:=tstringlist.create;
   nowCopy:=false;
   YesToAll:=false;
   NoToAll:=false;
   No:=false;
   Yes:=false;
+  doMove:=false;
 end;
 
 procedure TcopyF.FormDestroy(Sender: TObject);
 begin
+  deletelist.Free;
   qsrc.Free;
   destlist.free;
   srclist.free;
@@ -106,6 +112,7 @@ var
   tmp:string;
   Attr: Integer;
   CreationTime, LastWriteTime: TDateTime;
+  counter:integer;
 begin
    tmp:='';
    if ((srcList.Count = 0)and(not nowCopy)) then begin
@@ -115,14 +122,39 @@ begin
      NoToAll:=false;
      No:=false;
      Yes:=false;
-     copyf.Caption:=LngFormCaption;
+     //delete after move
+      if doMove then begin
+         for counter:=0 to deleteList.Count-1 do begin
+            if fileexists(deleteList.Strings[counter])
+            then
+              try
+                if not deleteFile(deleteList.Strings[counter])
+                then showmessage(LngCopyErrDelete+' '+extractfilename(deleteList.Strings[counter]));
+              except
+                on e: exception do showmessage(e.Message);
+              end
+            else
+            if directoryexists(deleteList.Strings[counter])
+            then
+              try
+                if not DeleteDirectory(deleteList.Strings[counter],false)
+                then showmessage(LngCopyErrDelete+' '+extractfilename(deleteList.Strings[counter]));
+              except
+                on e: exception do showmessage(e.Message);
+              end;
+           end;
+         deleteList.Clear;
+         doMove:=false;
+      end;
+     //***delete
      close;
    end else begin
      while srcList.Count<>0 do begin
-
        //папки
        if not nowCopy then begin
-         copyf.Caption:=LngFormCaption+' '+LngCopyLeftOf+' '+inttostr(srclist.Count);
+         if domove
+         then copyf.Caption:=LngFormCaptionMov+' '+LngCopyLeftOf+' '+inttostr(srclist.Count)
+         else copyf.Caption:=LngFormCaption+' '+LngCopyLeftOf+' '+inttostr(srclist.Count);
          if (FileGetAttr(srcList.Strings[0]) and faDirectory)<>0
          then begin
             if not forcedirectories(destList.Strings[0])
@@ -185,7 +217,6 @@ begin
        end;
        //while
        application.ProcessMessages;
-
      end;
    end;
 end;
@@ -218,13 +249,14 @@ begin
   nowCopy:=false;
 end;
 
-procedure TcopyF.addToCopyQueue(srcPath, destPath: string; addList: TstringList
-  );
+procedure TcopyF.addToCopyQueue(srcPath, destPath: string;
+  addList: TstringList; isMove: boolean);
 var
   counter:integer;
   tmp:string;
   tmplist:tstringlist;
 begin
+   doMove:=isMove;
    if ((logList.Count<>0) and (loglist.Items.Strings[0]=LngCopyFin)) then LogList.Clear;
    qsrc.Clear;
    tmpList:=tstringlist.Create;
@@ -256,6 +288,7 @@ end;
 procedure TcopyF.addToCopyQueue(srcPath, destPath: string;
   addList: TstringList; DestFile: string);
 begin
+//   doMove:=false;
   if ((logList.Count<>0) and (loglist.Items.Strings[0]=LngCopyFin)) then LogList.Clear;
   srcList.Add(IncludeTrailingPathDelimiter(srcPath)+addList.Strings[0]);
   destList.Add(IncludeTrailingPathDelimiter(destPath)+destFile);
@@ -265,6 +298,13 @@ end;
 procedure TcopyF.startCopy;
 begin
   //logList.Clear;
+  if domove
+  then begin
+    copyf.Caption:=LngFormCaptionMov;
+    deletelist.Clear;
+    deletelist.AddStrings(loglist.Items);
+  end
+  else copyf.Caption:=LngFormCaption;
   CpyTimer.Enabled:=true;
   show;
 end;

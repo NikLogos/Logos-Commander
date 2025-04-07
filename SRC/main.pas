@@ -65,6 +65,7 @@ const
    lngFopCaption = 'Оповещение';
    lngFopInfo = 'Список файлов пуст';
    LngCopyProgressCaption = 'Процесс копирования запущен';
+   LngCopyMove = 'Идет копирование файлов. Перемещение не возможно.';
    LngCopyProgressQ = 'Добавить файлы в очередь?';
    LngCopyProgressYes = 'Да';
    LngCopyProgressNo = 'Нет';
@@ -566,7 +567,7 @@ begin
      then begin
         if lSrc.getSelectedItems(tmpList,false)
         then
-          if tmpList.Count<>1 then copyf.addToCopyQueue(lSrc.Directory,lDest.Directory,tmplist)
+          if tmpList.Count<>1 then copyf.addToCopyQueue(lSrc.Directory,lDest.Directory,tmplist,false)
           else begin
             //если файл только один и это файл
             if (
@@ -575,13 +576,13 @@ begin
                 (dlgform.getDlg(lngCopyFile,lngCopyFilePrompt,tmpList.Strings[0],lngBtnYes,lngBtnNo, nName))
                 )
             then copyf.addToCopyQueue(lSrc.Directory,lDest.Directory,tmplist,nName)
-            else copyf.addToCopyQueue(lSrc.Directory,lDest.Directory,tmplist);
+            else copyf.addToCopyQueue(lSrc.Directory,lDest.Directory,tmplist,false);
           end;
      end;
   end else begin
     if lSrc.getSelectedItems(tmpList,false)
     then
-      if tmpList.Count<>1 then copyf.addToCopyQueue(lSrc.Directory,lDest.Directory,tmplist)
+      if tmpList.Count<>1 then copyf.addToCopyQueue(lSrc.Directory,lDest.Directory,tmplist,false)
       else begin
         //если файл только один и это файл
         if (
@@ -590,7 +591,7 @@ begin
             (dlgform.getDlg(lngCopyFile,lngCopyFilePrompt,tmpList.Strings[0],lngBtnYes,lngBtnNo, nName))
             )
         then copyf.addToCopyQueue(lSrc.Directory,lDest.Directory,tmplist,nName)
-        else copyf.addToCopyQueue(lSrc.Directory,lDest.Directory,tmplist);
+        else copyf.addToCopyQueue(lSrc.Directory,lDest.Directory,tmplist,false);
       end;
   end;
 
@@ -635,7 +636,8 @@ var
   tmp:tstringlist;
   counter:integer;
   pbar:tprogressbar;
-  dest:string;
+  dest,src:string;
+
 begin
   if lowercase(lflist.Directory[1]+lflist.Directory[2]) = lowercase(rflist.Directory[1]+rflist.Directory[2])
   then begin //перемещение в пределах одного диска
@@ -670,30 +672,20 @@ begin
 
     if leftPanelFocused
     then begin
-      lflist.getSelectedItems(tmp,true);
+      lflist.getSelectedItems(tmp,false);
       dest:=itbs(rflist.Directory);
-      pbar:=leftpb;
+      src:=itbs(lflist.Directory);
     end
     else begin
-      rflist.getSelectedItems(tmp,true);
+      rflist.getSelectedItems(tmp,false);
+      src:=itbs(rflist.Directory);
       dest:=itbs(lflist.Directory);
-      pbar:=rightpb;
     end;
-
-    if tmp.Count<>0 then begin
-     pbar.Max:=tmp.Count;
-     pbar.Show;
-     pbar.Step:=1;
-     for counter:=1 to tmp.Count do begin
-       MoveFileOrFolder(tmp.Strings[counter-1],dest,'');
-       pbar.StepBy(1);
-     end;
-     pbar.Hide;
-    end;
-
-    //mThread:=TThread.ExecuteInThread(@doMoveDiffDisks,nil);
-
+    if not copyf.getNowCopy then begin
+      if tmp.Count<>0 then copyf.addToCopyQueue(src,dest,tmp,true)
+    end else showmessage(LngCopyMove);
     tmp.Free;
+    copyf.startCopy;
   end;
 end;
 

@@ -1,7 +1,7 @@
 object copyF: TcopyF
-  Left = 574
+  Left = 799
   Height = 280
-  Top = 354
+  Top = 341
   Width = 640
   BorderStyle = bsDialog
   Caption = 'Copy'
