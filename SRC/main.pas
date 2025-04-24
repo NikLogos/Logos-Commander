@@ -24,6 +24,7 @@ uses LazFileUtils;
 //...
 AppendPathDelim(GetUserDir + 'Documents')
 GetAppConfigDir()
+GetDriveIDFromLetter
 }
 
 unit main;
@@ -65,6 +66,7 @@ const
    lngFopCaption = 'Оповещение';
    lngFopInfo = 'Список файлов пуст';
    LngCopyProgressCaption = 'Процесс копирования запущен';
+   LngCopyMove = 'Идет копирование файлов. Перемещение не возможно.';
    LngCopyProgressQ = 'Добавить файлы в очередь?';
    LngCopyProgressYes = 'Да';
    LngCopyProgressNo = 'Нет';
@@ -74,6 +76,10 @@ const
    lngRenameItemPrompt = 'Введите новое имя:';
    lngCopyFile  = 'Копировать';
    lngCopyFilePrompt = 'Имя файла:';
+   lngMenuItemFastGoAdd = 'Добавить';
+   lngMenuItemFastGoDel = 'Удалить';
+   lngMenuItemFastGoCopy = 'Копировать';
+   lngMenuItemFastGoPaste = 'Вставить и перейти';
 
 type
 
@@ -103,6 +109,8 @@ type
     llimg: TImage;
     MenuItem5: TMenuItem;
     MenuItem6: TMenuItem;
+    MenuItem7: TMenuItem;
+    MenuItem8: TMenuItem;
     mPanel: TPanel;
     PageControl1: TPageControl;
     PageControl2: TPageControl;
@@ -111,6 +119,7 @@ type
     Panel3: TPanel;
     leftPB: TProgressBar;
     Panel4: TPanel;
+    fastGoMenu: TPopupMenu;
     rightPB: TProgressBar;
     rDrivesMenu: TPopupMenu;
     MenuItem4: TMenuItem;
@@ -126,6 +135,7 @@ type
     RightImgTab: TTabSheet;
     rightPanel: TPanel;
     rlimg: TImage;
+    Separator1: TMenuItem;
     split50percent: TAction;
     ActionList1: TActionList;
     MainMenu1: TMainMenu;
@@ -167,7 +177,15 @@ type
     procedure ActionViewExecute(Sender: TObject);
     procedure CoolBar1Change(Sender: TObject);
     procedure EditLeftPathClick(Sender: TObject);
+    procedure EditLeftPathMouseDown(Sender: TObject; Button: TMouseButton;
+      Shift: TShiftState; X, Y: Integer);
+    procedure EditLeftPathMouseUp(Sender: TObject; Button: TMouseButton;
+      Shift: TShiftState; X, Y: Integer);
     procedure EditRightPathClick(Sender: TObject);
+    procedure EditRightPathMouseDown(Sender: TObject; Button: TMouseButton;
+      Shift: TShiftState; X, Y: Integer);
+    procedure EditRightPathMouseUp(Sender: TObject; Button: TMouseButton;
+      Shift: TShiftState; X, Y: Integer);
     procedure FormClose(Sender: TObject; var CloseAction: TCloseAction);
     procedure FormCreate(Sender: TObject);
     procedure FormDropFiles(Sender: TObject; const FileNames: array of string);
@@ -182,6 +200,7 @@ type
       Index: Integer);
     procedure lFListSelectCell(Sender: TObject; aCol, aRow: Integer;
       var CanSelect: Boolean);
+    procedure MenuItemFastGoAddClick(Sender: TObject);
     procedure rFListColRowInserted(Sender: TObject; IsColumn: Boolean; sIndex,
       tIndex: Integer);
     procedure rFListDirChange(Sender: TObject);
@@ -207,6 +226,7 @@ type
 
     //*********************** для файловых операций
     LeftPanelFocused:boolean;
+    fastgoLeft:boolean;
 
     DiskMon:TDeviceMonitor;
     procedure diskChanged(EventType: Word; Drive: string);
@@ -217,16 +237,25 @@ type
     procedure rightDrvBtnClick(Sender: TObject);
     procedure lDrvMenuClick(Sender: TObject);
     procedure rDrvMenuClick(Sender: TObject);
+    procedure FastGoClick(Sender: TObject);
+    procedure FastGoClickAdd(Sender: TObject);
+    procedure FastGoClickDel(Sender: TObject);
+    procedure FastGoClickCopy(Sender: TObject);
+    procedure FastGoClickPaste(Sender: TObject);
     procedure setfreespacelabel(drv:char; slabel:tlabel);
     function getVersion:string;
     procedure doCopy;
     procedure doDeleteToBin;
     procedure doMove;
+    procedure fillFastgo;
 
     procedure init;
     procedure fin;
 
     function itbs(path:string):string;
+    function dtbs(path:string):string;
+
+
 
 
   public
@@ -482,6 +511,76 @@ begin
     end
 end;
 
+procedure TmForm.FastGoClick(Sender: TObject);
+begin
+  with sender as tmenuitem do begin
+    if directoryexists(caption) then
+    if fastgoleft
+    then lflist.SetDirectory(caption)
+    else rflist.SetDirectory(caption)
+  end;
+end;
+
+procedure TmForm.FastGoClickAdd(Sender: TObject);
+var
+  tmp:tedit;
+begin
+  if fastgoLeft then tmp:=editleftpath else tmp:=editrightpath;
+  if not inifile.ValueExists('fastgo',tmp.Text) then inifile.WriteString('fastgo',tmp.Text,'*');
+  fillFastgo;
+end;
+
+procedure TmForm.FastGoClickDel(Sender: TObject);
+var
+  tmp:tedit;
+begin
+  if fastgoLeft then tmp:=editleftpath else tmp:=editrightpath;
+  if inifile.ValueExists('fastgo',tmp.Text) then inifile.DeleteKey('fastgo',tmp.Text);
+  fillFastgo;
+end;
+
+procedure TmForm.FastGoClickCopy(Sender: TObject);
+var
+  tmp:tedit;
+  tmplst:tfilelistgrid;
+begin
+  if fastgoLeft then begin
+    tmp:=editleftpath;
+    tmplst:=lflist;
+  end else begin
+    tmp:=editrightpath;
+    tmplst:=rflist;
+  end;
+
+  if tmp.CanFocus and tmplst.CanFocus then begin
+    tmp.SetFocus;
+    tmp.CopyToClipboard;
+    tmplst.SetDirectory(dtbs(tmp.Text));
+    tmplst.SetFocus;
+  end;
+end;
+
+procedure TmForm.FastGoClickPaste(Sender: TObject);
+var
+  tmp:tedit;
+  tmplst:tfilelistgrid;
+begin
+  if fastgoLeft then begin
+    tmp:=editleftpath;
+    tmplst:=lflist;
+  end else begin
+    tmp:=editrightpath;
+    tmplst:=rflist;
+  end;
+
+  if tmp.CanFocus and tmplst.CanFocus then begin
+    tmp.SetFocus;
+    tmp.PasteFromClipboard;
+    tmplst.SetDirectory(dtbs(tmp.Text));
+    tmplst.SetFocus;
+  end;
+end;
+
 procedure TmForm.setfreespacelabel(drv: char; slabel: tlabel);
 var
   sBytes:TLargeInteger;
@@ -566,7 +665,7 @@ begin
      then begin
         if lSrc.getSelectedItems(tmpList,false)
         then
-          if tmpList.Count<>1 then copyf.addToCopyQueue(lSrc.Directory,lDest.Directory,tmplist)
+          if tmpList.Count<>1 then copyf.addToCopyQueue(lSrc.Directory,lDest.Directory,tmplist,false)
           else begin
             //если файл только один и это файл
             if (
@@ -575,13 +674,13 @@ begin
                 (dlgform.getDlg(lngCopyFile,lngCopyFilePrompt,tmpList.Strings[0],lngBtnYes,lngBtnNo, nName))
                 )
             then copyf.addToCopyQueue(lSrc.Directory,lDest.Directory,tmplist,nName)
-            else copyf.addToCopyQueue(lSrc.Directory,lDest.Directory,tmplist);
+            else copyf.addToCopyQueue(lSrc.Directory,lDest.Directory,tmplist,false);
           end;
      end;
   end else begin
     if lSrc.getSelectedItems(tmpList,false)
     then
-      if tmpList.Count<>1 then copyf.addToCopyQueue(lSrc.Directory,lDest.Directory,tmplist)
+      if tmpList.Count<>1 then copyf.addToCopyQueue(lSrc.Directory,lDest.Directory,tmplist,false)
       else begin
         //если файл только один и это файл
         if (
@@ -590,7 +689,7 @@ begin
             (dlgform.getDlg(lngCopyFile,lngCopyFilePrompt,tmpList.Strings[0],lngBtnYes,lngBtnNo, nName))
             )
         then copyf.addToCopyQueue(lSrc.Directory,lDest.Directory,tmplist,nName)
-        else copyf.addToCopyQueue(lSrc.Directory,lDest.Directory,tmplist);
+        else copyf.addToCopyQueue(lSrc.Directory,lDest.Directory,tmplist,false);
       end;
   end;
 
@@ -635,7 +734,8 @@ var
   tmp:tstringlist;
   counter:integer;
   pbar:tprogressbar;
-  dest:string;
+  dest,src:string;
+
 begin
   if lowercase(lflist.Directory[1]+lflist.Directory[2]) = lowercase(rflist.Directory[1]+rflist.Directory[2])
   then begin //перемещение в пределах одного диска
@@ -670,31 +770,71 @@ begin
 
     if leftPanelFocused
     then begin
-      lflist.getSelectedItems(tmp,true);
+      lflist.getSelectedItems(tmp,false);
       dest:=itbs(rflist.Directory);
-      pbar:=leftpb;
+      src:=itbs(lflist.Directory);
     end
     else begin
-      rflist.getSelectedItems(tmp,true);
+      rflist.getSelectedItems(tmp,false);
+      src:=itbs(rflist.Directory);
       dest:=itbs(lflist.Directory);
-      pbar:=rightpb;
     end;
-
-    if tmp.Count<>0 then begin
-     pbar.Max:=tmp.Count;
-     pbar.Show;
-     pbar.Step:=1;
-     for counter:=1 to tmp.Count do begin
-       MoveFileOrFolder(tmp.Strings[counter-1],dest,'');
-       pbar.StepBy(1);
-     end;
-     pbar.Hide;
-    end;
-
-    //mThread:=TThread.ExecuteInThread(@doMoveDiffDisks,nil);
-
+    if not copyf.getNowCopy then begin
+      if tmp.Count<>0 then copyf.addToCopyQueue(src,dest,tmp,true)
+    end else showmessage(LngCopyMove);
     tmp.Free;
+    copyf.startCopy;
   end;
+end;
+
+procedure TmForm.fillFastgo;
+var
+  tmp:tstringlist;
+  counter:integer;
+  mtmp:tmenuitem;
+begin
+  tmp:=tstringlist.Create;
+  fastgomenu.Items.Clear;
+  tmp.Clear;
+  inifile.ReadSection('fastgo',tmp);
+  for counter:=0 to tmp.Count - 1 do begin
+    if directoryexists(tmp.Strings[counter]) then begin
+      mtmp:=tmenuitem.Create(fastgomenu);
+      mtmp.Caption:=tmp.Strings[counter];
+      mtmp.OnClick:=@FastGoClick;
+      fastgomenu.Items.Insert(0,mtmp);
+    end;
+  end;
+  //separetor
+  mtmp:=tmenuitem.Create(fastgomenu);
+  mtmp.Caption:='-';
+  fastgomenu.Items.add(mtmp);
+  //add
+  mtmp:=tmenuitem.Create(fastgomenu);
+  mtmp.Caption:=lngMenuItemFastGoAdd;
+  mtmp.OnClick:=@FastGoClickAdd;
+  fastgomenu.Items.add(mtmp);
+  //del
+  mtmp:=tmenuitem.Create(fastgomenu);
+  mtmp.Caption:=lngMenuItemFastGoDel;
+  mtmp.OnClick:=@FastGoClickDel;
+  fastgomenu.Items.add(mtmp);
+  //separetor
+  mtmp:=tmenuitem.Create(fastgomenu);
+  mtmp.Caption:='-';
+  fastgomenu.Items.add(mtmp);
+  //Copy
+  mtmp:=tmenuitem.Create(fastgomenu);
+  mtmp.Caption:=lngMenuItemFastGoCopy;
+  mtmp.OnClick:=@FastGoClickCopy;
+  fastgomenu.Items.add(mtmp);
+  //Paste
+  mtmp:=tmenuitem.Create(fastgomenu);
+  mtmp.Caption:=lngMenuItemFastGoPaste;
+  mtmp.OnClick:=@FastGoClickPaste;
+  fastgomenu.Items.add(mtmp);
+
+  tmp.free;
 end;
 
 procedure TmForm.init;
@@ -795,6 +935,8 @@ begin
 
    lflist.Directory:=inifile.ReadString('main','lfdir','c:');
    rflist.Directory:=inifile.ReadString('main','rfdir','c:');
+
+   fillFastgo;
 end;
 
 procedure TmForm.fin;
@@ -853,6 +995,11 @@ end;
 function TmForm.itbs(path: string): string;
 begin
   result:=includetrailingbackslash(path);
+end;
+
+function TmForm.dtbs(path: string): string;
+begin
+  result:=excludetrailingbackslash(path);
 end;
 
 procedure TmForm.SetColors;
@@ -949,6 +1096,15 @@ procedure TmForm.lFListSelectCell(Sender: TObject; aCol, aRow: Integer;
   var CanSelect: Boolean);
 begin
 
+end;
+
+procedure TmForm.MenuItemFastGoAddClick(Sender: TObject);
+var
+  tmp:tedit;
+begin
+  if fastgoLeft then tmp:=editleftpath else tmp:=editrightpath;
+  if not inifile.ValueExists('fastgo',tmp.Text) then inifile.WriteString('fastgo',tmp.Text,tmp.Text);
+  fillFastgo;
 end;
 
 procedure TmForm.rFListColRowInserted(Sender: TObject; IsColumn: Boolean;
@@ -1107,6 +1263,18 @@ begin
   if lflist.CanFocus then lflist.setFocus;
 end;
 
+procedure TmForm.EditLeftPathMouseDown(Sender: TObject; Button: TMouseButton;
+  Shift: TShiftState; X, Y: Integer);
+begin
+
+end;
+
+procedure TmForm.EditLeftPathMouseUp(Sender: TObject; Button: TMouseButton;
+  Shift: TShiftState; X, Y: Integer);
+begin
+  fastgoLeft:=true;
+end;
+
 procedure TmForm.EditRightPathClick(Sender: TObject);
 var
   oldpos,counter:integer;
@@ -1121,6 +1289,18 @@ begin
   EditRightPath.SelLength:=0;
   if tmp<>EditRightPath.text then rflist.setDirectory(tmp);
   if rflist.CanFocus then rflist.setFocus;
+end;
+
+procedure TmForm.EditRightPathMouseDown(Sender: TObject; Button: TMouseButton;
+  Shift: TShiftState; X, Y: Integer);
+begin
+
+end;
+
+procedure TmForm.EditRightPathMouseUp(Sender: TObject; Button: TMouseButton;
+  Shift: TShiftState; X, Y: Integer);
+begin
+  fastgoLeft:=false;
 end;
 
 procedure TmForm.FormClose(Sender: TObject; var CloseAction: TCloseAction);

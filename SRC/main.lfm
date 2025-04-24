@@ -184,10 +184,13 @@ object mForm: TmForm
             AutoSize = False
             BorderStyle = bsNone
             Color = clActiveCaption
+            PopupMenu = fastGoMenu
             TabStop = False
             TabOrder = 1
             Text = 'EditRightPath'
             OnClick = EditRightPathClick
+            OnMouseDown = EditRightPathMouseDown
+            OnMouseUp = EditRightPathMouseUp
           end
           object Panel2: TPanel
             Left = 0
@@ -569,10 +572,13 @@ object mForm: TmForm
             AutoSize = False
             BorderStyle = bsNone
             Color = clActiveCaption
+            PopupMenu = fastGoMenu
             TabStop = False
             TabOrder = 2
             Text = 'EditLeftPath'
             OnClick = EditLeftPathClick
+            OnMouseDown = EditLeftPathMouseDown
+            OnMouseUp = EditLeftPathMouseUp
           end
         end
         object LeftImgTab: TTabSheet
@@ -838,5 +844,18 @@ object mForm: TmForm
     Images = ImageList1
     Left = 411
     Top = 206
+  end
+  object fastGoMenu: TPopupMenu
+    Left = 161
+    Top = 424
+    object MenuItem7: TMenuItem
+      Caption = 'MenuItem7'
+    end
+    object Separator1: TMenuItem
+      Caption = '-'
+    end
+    object MenuItem8: TMenuItem
+      Caption = 'MenuItem8'
+    end
   end
 end

@@ -18,7 +18,7 @@
       <UseVersionInfo Value="True"/>
       <AutoIncrementBuild Value="True"/>
       <MinorVersionNr Value="9"/>
-      <RevisionNr Value="16"/>
+      <RevisionNr Value="17"/>
       <BuildNr Value="3"/>
       <Language Value="0419"/>
       <Attributes pvaPreRelease="True" pvaPrivateBuild="True"/>
@@ -106,6 +106,7 @@
     <Linking>
       <Debugging>
         <DebugInfoType Value="dsDwarf3"/>
+        <UseLineInfoUnit Value="False"/>
       </Debugging>
       <Options>
         <Win32>
